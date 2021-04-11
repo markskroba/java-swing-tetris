@@ -1,4 +1,4 @@
-package app.src.main.java.Tetris.view;
+package view;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
