@@ -1,4 +1,4 @@
-//package view;
+package view;
 import javax.swing.*;
 import java.awt.Color;
 import javax.swing.border.Border;
