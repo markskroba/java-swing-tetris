@@ -1,7 +1,6 @@
-package app.src.main.java.Tetris;
+package Tetris;
 import model.*;
-import app.src.main.java.Tetris.view.HighScoresGUI;
-import app.src.main.java.Tetris.view.GameView;
+import view.*;
 import controller.*;
 import java.awt.event.*;
 
