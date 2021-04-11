@@ -1,4 +1,7 @@
 package view;
+import model.*;
+import controller.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -32,6 +35,10 @@ public class GameView extends JPanel
         this.add(sidePanel);
         this.setBackground(Color.LIGHT_GRAY);
 
+	ObservableBlock block = new ObservableBlock();
+	BlockController controller = new BlockController(block);
+	
+	frame.addKeyListener(controller);
         frame.add(this);
         frame.pack();
         frame.setVisible(true);
