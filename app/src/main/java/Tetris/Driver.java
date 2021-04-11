@@ -18,14 +18,20 @@ public class Driver
 		}
 	});
 
-	//Demonstrates use case 4
+	//Demonstrates use case 4 and 5
 	GameView gameView = new GameView();
 	
 
 	//Demonstrates use case 1 and 2
 	MainScreenGUI mainScreenGUI = new MainScreenGUI();
 	
-	//Demonstrate use case 5
+	//Demonstrate use case 6 and 7
+	ObservableBlock block = new ObservableBlock();
+	Scores score = new Scores();
+	block.removeBlock();
+	score.calculateScore(1);
+	score.getScore();
+	block.isSettle();
 	
     }
 }
