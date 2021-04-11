@@ -1,4 +1,4 @@
-package model
+package model;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +42,7 @@ public class HighScores extends JPanel
 
     }
 
-    public void add(int score)
+    public void addHighScore(int score)
     {
 	try {
 
