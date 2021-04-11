@@ -1,6 +1,7 @@
-package Tetris;
+package app.src.main.java.Tetris;
 import model.*;
-import view.*;
+import app.src.main.java.Tetris.view.HighScoresGUI;
+import app.src.main.java.Tetris.view.GameView;
 import controller.*;
 import java.awt.event.*;
 
@@ -15,5 +16,7 @@ public class Driver
 		    System.out.println("Button pressed to return to main page");
 		}
 	});
+
+	GameView gameView = new GameView();
     }
 }
