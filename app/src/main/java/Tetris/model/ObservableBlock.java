@@ -1,14 +1,16 @@
-//package model;
+package model;
 import java.util.ArrayList;
-
 
 public class ObservableBlock extends Block
 {
-	protected ArrayList<BlockObserver> observers;
+	//protected ArrayList<BlockObserver> observers;
 	public ObservableBlock()
 	{
+		/*
 		super();
 		observers = new ArrayList<BlockObserver>();
+		*/
+		System.out.println("ObservableBlock constructor");
 	}
 	
 	public void notifyObservers()
