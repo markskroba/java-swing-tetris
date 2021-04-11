@@ -1,4 +1,4 @@
-package app.src.main.java.Tetris.model;
+package model;
 
 public interface BlockObserver 
 {
