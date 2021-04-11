@@ -1,4 +1,4 @@
-//package model;
+package model;
 import java.awt.Color;
 import java.util.Random;
 
