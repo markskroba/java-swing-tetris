@@ -17,16 +17,18 @@ public class Driver
 		    System.out.println("Button pressed to return to main page");
 		}
 	});
+	
+	ObservableBlock block = new ObservableBlock();
 
 	//Demonstrates use case 4 and 5
 	GameView gameView = new GameView();
-	
+	BlockController controller = new BlockController(block);
+	gameView.addKeyListener(controller);
 
 	//Demonstrates use case 1 and 2
 	MainScreenGUI mainScreenGUI = new MainScreenGUI();
 	
 	//Demonstrate use case 6 and 7
-	ObservableBlock block = new ObservableBlock();
 	Scores score = new Scores();
 	block.removeBlock();
 	score.calculateScore(1);
