@@ -1,7 +1,7 @@
 package Tetris;
 import model.*;
 import view.*;
-//import controller.*;
+import controller.*;
 import java.awt.event.*;
 
 public class Driver
