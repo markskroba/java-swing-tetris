@@ -32,7 +32,7 @@ public class Block
 		blockColor = colorSelectionArray[rand.nextInt(7)];
 	}
 	
-	public void getColor()
+	public Color getColor()
 	{
 		return blockColor;
 	}

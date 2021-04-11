@@ -1,5 +1,5 @@
 package controller;
-import model.*;
+import model.Block;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
@@ -31,6 +31,17 @@ public class BlockController implements KeyListener
           {
 	      System.out.println("Moving down using BlockController");
           }
+     }
 
+     @Override
+     public void keyReleased(KeyEvent e)
+     {
+	//not used but need to over ride
+     }
+
+     @Override
+     public void keyTyped(KeyEvent e)
+     {
+	//not used but need to over ride
      }
 }
