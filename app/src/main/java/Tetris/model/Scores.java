@@ -1,10 +1,10 @@
 package model;
 
-public class Score
+public class Scores
 {
     private int currentScore;
 
-    public Score()
+    public Scores()
     {
 	currentScore = 0;
     }
