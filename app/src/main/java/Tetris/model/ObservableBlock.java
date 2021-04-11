@@ -1,4 +1,4 @@
-package app.src.main.java.Tetris.Model;
+package model;
 import java.util.ArrayList;
 
 public class ObservableBlock extends Block

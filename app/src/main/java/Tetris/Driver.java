@@ -17,8 +17,9 @@ public class Driver
 	});
 
 	GameView gameView = new GameView();
-
-
-	GameView game = new GameView();
+	
+	MainScreenGUI mainScreenGUI = new MainScreenGUI();
+	
+	
     }
 }
