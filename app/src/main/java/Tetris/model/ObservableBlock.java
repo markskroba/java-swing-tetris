@@ -1,4 +1,4 @@
-package model;
+package app.src.main.java.Tetris.Model;
 import java.util.ArrayList;
 
 public class ObservableBlock extends Block
@@ -30,13 +30,13 @@ public class ObservableBlock extends Block
 		//observers.add(o);
 	}
 
-	public void moveVertically(int length)
+	public void moveVertically()
 	{
 		System.out.println("moves the block vertically");
 		//notifyObservers();
 	}
 
-	public void moveHorizontally(int length)
+	public void moveHorizontally()
 	{
 		System.out.println("moves the block horizontally");
 		//notifyObservers();
