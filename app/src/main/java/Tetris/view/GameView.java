@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-public class GameView extends JPanel
+public class GameView extends JPanel implements BlockObserver
 {
     private int resolutionX;
     private int resolutionY;
@@ -24,7 +24,7 @@ public class GameView extends JPanel
         resolutionX = 800;
         resolutionY = 900;
         
-        frame = new JFrame();
+        frame = new JFrame("Tetris");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(resolutionX, resolutionY));
 
@@ -38,10 +38,19 @@ public class GameView extends JPanel
 	ObservableBlock block = new ObservableBlock();
 	BlockController controller = new BlockController(block);
 	
-	frame.addKeyListener(controller);
+
         frame.add(this);
+	frame.addKeyListener(controller);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    @Override
+    public void update(int row, int column)
+    {
+	System.out.println("Updates the screen to show the block movement");
+	this.revalidate();
+	this.repaint();
     }
 
 }
