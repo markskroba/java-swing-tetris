@@ -1,15 +1,16 @@
 package model;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class ObservableBlock extends Block
 {
 	//protected ArrayList<BlockObserver> observers;
-	public ObservableBlock()
+	public ObservableBlock(int side, Color color, boolean active, boolean settle )
 	{
-		/*
-		super();
-		observers = new ArrayList<BlockObserver>();
-		*/
+		
+		super(side, color, active, settle);
+		//observers = new ArrayList<BlockObserver>();
+		
 		System.out.println("ObservableBlock constructor");
 	}
 	

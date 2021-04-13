@@ -1,7 +1,7 @@
 package model;
 import java.awt.Color;
 import java.util.Random;
-import javax.swing.BroderFactory;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import java.awt.Dimension;
@@ -17,10 +17,11 @@ public class Block extends JPanel
 	protected boolean isActive;
 	protected boolean isSettle;
 	
-	public Block(int side, boolean active, boolean settle)
+	public Block(int side, Color color, boolean active, boolean settle)
 	{
 		isActive = active;
 		isSettle = settle;
+		blockColor = color;
 
 		this.setPreferredSize(new Dimension(side,side));
 		if (active)
