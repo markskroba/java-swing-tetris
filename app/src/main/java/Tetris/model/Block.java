@@ -1,35 +1,39 @@
 package model;
 import java.awt.Color;
 import java.util.Random;
+import javax.swing.BroderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+import java.awt.Dimension;
 
-public class Block
+
+/*Creates an individual block that has a size and color. Each block also has two boolean
+ * conditions isActive and isSettle that tell whether the block is currently showing 
+ * (isActive = true) and if the block is part of a moving shape (isSettle = false).
+ */
+public class Block extends JPanel
 {
 	protected Color blockColor;
 	protected boolean isActive;
 	protected boolean isSettle;
-	protected Color[] colorSelectionArray;
-	protected Random rand;
 	
-	public Block()
+	public Block(int side, boolean active, boolean settle)
 	{
-		isActive = false;
-		isSettle = false;
-		
-		colorSelectionArray = new Color[7];
-		colorSelectionArray[0] = Color.cyan;
-		colorSelectionArray[1] = Color.blue;
-		colorSelectionArray[2] = Color.orange;
-		colorSelectionArray[3] = Color.yellow;
-		colorSelectionArray[4] = Color.green;
-		colorSelectionArray[5] = Color.magenta;
-		colorSelectionArray[6] = Color.red;
-		
-		rand = new Random();
+		isActive = active;
+		isSettle = settle;
+
+		this.setPreferredSize(new Dimension(side,side));
+		if (active)
+		{
+		    this.setBackground(color);
+		    Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
+		    this.setBorder(border);
+		}
 	}
 	
-	public void setColor()
+	public void setColor(Color color)
 	{
-		blockColor = colorSelectionArray[rand.nextInt(7)];
+		blockColor = color;
 	}
 	
 	public Color getColor()
@@ -37,14 +41,14 @@ public class Block
 		return blockColor;
 	}
 	
-	public void setIsActive()
+	public void setIsActive(boolean cond)
 	{
-		System.out.println("Sets the value of isActive");
+		isActive = cond;
 	}
 	
-	public void setIsSettle()
+	public void setIsSettle(boolean cond)
 	{
-		System.out.println("Sets the value of isSettle");
+		isSettle = cond;
 	}
 	
 	public boolean isActive()
