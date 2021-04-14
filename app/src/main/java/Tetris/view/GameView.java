@@ -35,7 +35,7 @@ public class GameView extends JPanel implements BlockObserver
         this.add(sidePanel);
         this.setBackground(Color.LIGHT_GRAY);
 
-	ObservableBlock block = new ObservableBlock();
+	ObservableBlock block = new ObservableBlock(56, Color.BLUE, true, false);
 	BlockController controller = new BlockController(block);
 	
 
