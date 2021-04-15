@@ -1,43 +1,34 @@
 package model;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Dimension;
 
-public class LShape extends JPanel implements TetrisShape
+
+public class LShape extends TetrisShape
 {
-     protected Block[][] gridShape;
-     private JPanel shapePanel;
+     private int orientation;
+     private Color color;
 
-     public LShape(int side, Color color)
+     public LShape(Color color)
      {
-	GridLayout layout = new GridLayout(3,3);
-	layout.setHgap(0);
-	layout.setVgap(0);
-	this.setLayout(layout);
-	this.setPreferredSize(new Dimension(3*side, 3*side));
+	this.color = color;
 
-	gridShape = new Block[3][3];
+	//Initialize each element with an arraylist
+	blockArray.setUpArray(3);
 
 	//set up initial L shaped block using array
-	gridShape[0][0] = new Block(side, color, true, false);
-	gridShape[0][1] = new Block(side, color, false, false);
-	gridShape[0][2] = new Block(side, color, false, false);
-	gridShape[1][0] = new Block(side, color, true, false);
-	gridShape[1][1] = new Block(side, color, false, false);
-	gridShape[1][2] = new Block(side, color, false, false);
-	gridShape[2][0] = new Block(side, color, true, false);
-	gridShape[2][1] = new Block(side, color, true, false);
-	gridShape[2][2] = new Block(side, color, false, false);
+	blockArray.add(0, new Block(color));
+	blockArray.add(1, new Block(color));
+	blockArray.add(2, new Block(color));
+	blockArray.get(2).add(1, new Block(color));
 
-	//add the sub-panels (aka blocks) to a larger panel that can be updated
-	for(int i=0; i<3; i++)
+	orientation = 1; 
+     }
+
+     public ArrayList<ArrayList<Block>> setUpArray(int row)
+     {
+	for(int i=0; i<row; i++)
 	{
-	     for(int j=0; j<3; j++)
-	     {
-		this.add(gridShape[i][j]);
-	     }
+	    blockArray.add(new ArrayList<Block>());
 	}
      }
 
@@ -53,41 +44,57 @@ public class LShape extends JPanel implements TetrisShape
 
      public void rotateShape()
      {
-	if(gridShape[0][0].isActive() == true && gridShape[0][1].isActive() == false)
+	blockArray.clear();
+
+	if(orientation.equals(1))
 	{
-	     gridShape[0][1].setIsActive(true);
-	     gridShape[0][2].setIsActive(true);
-	     gridShape[2][0].setIsActive(false);
-	     gridShape[2][1].setIsActive(false);
+	     blockArray.setUpArray(2);
+	     blockArray.add(0, new Block(color));
+	     blockArray.get(0).add(1, new Block(color));
+	     blockArray.get(0).add(2, new Block(color));
+	     blockArray.add(1, new Block(color));
+
+	     orientation = 2;
 	}
 
-	else if(gridShape[0][0].isActive() == true && gridShape[0][1].isActive() == true)
+	else if(orientation.equals(2))
 	{
-	     gridShape[0][0].setIsActive(false);
-	     gridShape[1][0].setIsActive(false);
-	     gridShape[1][2].setIsActive(true);
-	     gridShape[2][2].setIsActive(true);
+	     blockArray.setUpArray(3);
+	     blockArray.add(0, new Block(color));
+	     blockArray.get(0).add(1, new Block(color));
+	     blockArray.add(1, null);
+	     blockArray.get(1).add(1, new Block(color));
+	     blockArray.add(2, null);
+	     blockArray.get(2).add(1, new Block(color));
+
+	     orientation = 3;
 	}
 
-	else if(gridShape[0][0].isActive() == false && gridShape[0][1].isActive() == true)
+	else if(orientation.equals(2))
 	{
-	     gridShape[0][1].setIsActive(false);
-	     gridShape[0][2].setIsActive(false);
-	     gridShape[2][1].setIsActive(true);
-	     gridShape[2][1].setIsActive(true);
+	     blockArray.setUpArray(2);
+	     blockArray.add(0, null);
+	     blockArray.get(0).add(1, null);
+	     blockArray.get(0).add(2, new Block(color));
+	     blockArray.add(1, new Block(color));
+	     blockArray.get(1),add(1, new Block(color));
+	     blockArray.get(1).add(2, new Block(color));
+
+	     orientation = 4;
 	}
 
-	else if(gridShape[0][0].isActive() == false && gridShape[0][1].isActive() == false)
+	else if(orientation.equals(4))
 	{
-	     gridShape[0][0].setIsActive(true);
-	     gridShape[1][0].setIsActive(true);
-	     gridShape[1][2].setIsActive(false);
-	     gridShape[2][2].setIsActive(false);
+	     blockArray.setUpArray(3);
+	     blockArray.add(0, new Block(color));
+	     blockArray.add(1, new Block(color));
+	     blockArray.add(2, new Block(color));
+	     blockArray.get(2).add(1, new Block(color));
+
+	     orientation = 1; 
 	}
 
-	this.revalidate();
-	this.repaint();
-     }
+    }
 }
 
 
