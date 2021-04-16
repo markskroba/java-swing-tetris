@@ -9,11 +9,12 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-public class GameView extends JPanel implements BlockObserver
+public class GameView extends JPanel //implements BlockObserver
 {
     private int resolutionX;
     private int resolutionY;
 
+    private JPanel gamePanel;
     private JFrame frame;
 
     public GameView() 
@@ -28,23 +29,29 @@ public class GameView extends JPanel implements BlockObserver
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(resolutionX, resolutionY));
 
-        GamePanel gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
+        gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
         
         this.add(gamePanel);
         SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY);
         this.add(sidePanel);
         this.setBackground(Color.LIGHT_GRAY);
 
-	ObservableBlock block = new ObservableBlock(56, Color.BLUE, true, false);
-	BlockController controller = new BlockController(block);
 	
-
         frame.add(this);
-	frame.addKeyListener(controller);
+
         frame.pack();
         frame.setVisible(true);
     }
 
+    public void addTetrisShape(TetrisShape shape)
+    {
+	BlockController controller = new BlockController(shape);
+
+	gamePanel.addKeyListener(controller);
+	gamePanel.revalidate();
+	gamePanel.repaint();
+    }
+/*
     @Override
     public void update(int row, int column)
     {
@@ -52,5 +59,5 @@ public class GameView extends JPanel implements BlockObserver
 	this.revalidate();
 	this.repaint();
     }
-
+*/
 }
