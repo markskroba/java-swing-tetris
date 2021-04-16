@@ -5,10 +5,10 @@ import java.awt.Color;
 public class ObservableBlock extends Block
 {
 	//protected ArrayList<BlockObserver> observers;
-	public ObservableBlock(int side, Color color, boolean active, boolean settle )
+	public ObservableBlock(Color color)
 	{
 		
-		super(side, color, active, settle);
+		super(color);
 		//observers = new ArrayList<BlockObserver>();
 		
 		System.out.println("ObservableBlock constructor");

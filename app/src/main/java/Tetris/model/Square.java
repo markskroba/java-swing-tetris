@@ -1,39 +1,23 @@
 package model;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Square extends JPanel implements TetrisShape
+public class Square extends TetrisShape
 {
-     protected Block[][] gridShape;
-     private JPanel shapePanel;
+     private int orientation;
+     private Color color;
 
-     public Square(int side, Color color)
+     public Square(Color color)
      {
-	GridLayout layout = new GridLayout(2,2);
-	layout.setHgap(0);
-	layout.setVgap(0);
-	this.setLayout(layout);
-	this.setPreferredSize(new Dimension(2*side, 2*side));
-
-	gridShape = new Block[2][2];
+	 super(color);
+	 this.color = color;
 
 	//set up initial Square shaped block using array
-	gridShape[0][0] = new Block(side, color, true, false);
-	gridShape[0][1] = new Block(side, color, true, false);
-	gridShape[1][0] = new Block(side, color, true, false);
-	gridShape[1][1] = new Block(side, color, false, false);
-
-	//add the sub-panels (aka blocks) to a larger panel that can be updated
-	for(int i=0; i<2; i++)
-	{
-	     for(int j=0; j<2; j++)
-	     {
-		this.add(gridShape[i][j]);
-	     }
-	}
+	blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
+	blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
+	 
      }
 
      public void moveHorizontally()
@@ -48,6 +32,8 @@ public class Square extends JPanel implements TetrisShape
 
      public void rotateShape()
      {
-	//don't need to code anything because rotating a square 90 deg doesn't change how it looks
+	//Does not have an effect on a square
      }
 }
+
+

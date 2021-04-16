@@ -1,11 +1,19 @@
 package model;
+import java.awt.Color;
 
-public interface TetrisShape
+public abstract class TetrisShape extends TetrisArray
 {
-    public void moveVertically();
+    protected Color shapeColor;
 
-    public void moveHorizontally();
+    public TetrisShape(Color color)
+    {
+	this.shapeColor = color;
+    }
+	
+    public abstract void moveVertically();
 
-    public void rotateShape();
+    public abstract void moveHorizontally();
+
+    public abstract void rotateShape();
 
 }
