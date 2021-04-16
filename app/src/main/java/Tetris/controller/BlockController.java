@@ -1,15 +1,44 @@
 package controller;
-import model.Block;
+import model.*;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import javax.swing.Timer;
 
 public class BlockController implements KeyListener
 {
-     protected Block block;
+     protected TetrisShape currentTetrisShape;
+     protected TetrisArray currentState;
+     protected TetrisField tetrisField;
+     protected TetrisUserInterface ui;
+     protected TetrisFactory factory;
+     protected Timer timer;
 
-     public BlockController(Block block)
+     public BlockController(TetrisUserInterface ui, TetrisFactory factory)
      {
-	this.block = block;
+	this.ui = ui;
+	this.factory = factory;
+     }
+
+     public void nextTetrisShape(String shape, Color color)
+     {
+	currentTetrisShape = factory.getShape(shape, color);
+     }
+
+     public void setDifficulty(String difficulty)
+     {
+	if(difficulty.equals("easy");
+	{
+	     timer = new Timer(500, ActionListener l);
+	}
+	else if(difficulty.equals("medium");
+	{
+	    timer = new Timer(400, ActionListener l);
+	}
+	else if(difficulty.equals("hard");
+	{
+	    timer = new Timer(300, ActionListener l);
+	}
+	timer.start();
      }
 
      @Override
@@ -17,20 +46,38 @@ public class BlockController implements KeyListener
      {
 	 if (e.getKeyCode() == KeyEvent.VK_RIGHT)
           {
-            System.out.println("Moving right using Block Controller");
+	      currentTetrisShape.moveHorizontally(1);
+	      updateState();
           }
          else if (e.getKeyCode() == KeyEvent.VK_LEFT)
           {
-            System.out.println("Moving left using BlockController");
+	      currentTetrisShape.moveHorizontally(-1);
+	      updateState();
           }
           else if (e.getKeyCode() == KeyEvent.VK_UP)
           {
-            System.out.println("Rotating Clockwise");
+	      currentTetrisShape.rotateShape();
+	      updateState();
           }
           else if (e.getKeyCode() == KeyEvent.VK_DOWN)
           {
-	      System.out.println("Moving down using BlockController");
+	      currentTetrisShape.moveVertically();
+	      updateState();
           }
+     }
+
+     public void timerCallback()
+     {
+	//moves the currentTetrisShape down one cell, calls tetrisField.add(currentShape) to update currentState,
+	//then calls updateView(currentState)
+	currentTetrisSahpe.moveVertically();
+	updateState();	
+     }
+
+     public void updateState()
+     {
+	currentState = tetrisField.add(currentTetrisShape);
+	ui.updateView(currentState);
      }
 
      @Override
