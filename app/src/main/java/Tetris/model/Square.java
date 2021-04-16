@@ -6,17 +6,33 @@ import java.util.Arrays;
 
 public class Square extends TetrisShape
 {
-     private int orientation;
+     private ArrayList<ArrayList<Block>> shapeArray;
      private Color color;
 
      public Square(Color color)
      {
 	 super(color);
 	 this.color = color;
+	 shapeArray = new ArrayList<ArrayList<Block>();
 
-	//set up initial Square shaped block using array
-	blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-	blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
+	 //create an empty array for the new shape
+	 for(int i=0; i<numRows; i++)
+	 {
+	    shapeArray.add(new ArrayList<Block>());
+
+	    for(int j=0; j<numCols; j++)
+	    {
+		shapeArray.get(i).add(j, null);
+	    }
+	 }
+
+	 //add the shape to the center top of the shapeArray
+	 int center = numCols/2;
+
+	 shapeArray.get(center).add(0, new Block(color));
+	 shapeArray.get(center+1).add(0, new Block(color));
+	 shapeArry.get(center).add(1, new Block(color));
+	 shapeArray.get(center+1).add(1, new Block(color));
 	 
      }
 

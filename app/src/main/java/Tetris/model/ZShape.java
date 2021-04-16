@@ -6,20 +6,34 @@ import java.util.Arrays;
 
 public class ZShape extends TetrisShape
 {
-     private int orientation;
+     private ArrayList<ArrayList<Block>> shapeArray;
      private Color color;
 
      public ZShape(Color color)
      {
 	 super(color);
 	 this.color = color;
+	 shapeArray = new ArrayList<ArrayList<Block>>();
 
-	//set up initial Z shaped block using array
-	blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-	blockArray.add(1, new ArrayList<Block>(Arrays.asList(null, new Block(color), new Block(color))));
-	
+	 //create an empty array for the new shape
+	 for(int i=0; i<numRows; i++)
+	 {
+	    shapeArray.add(new ArrayList<Block>());
 
-	orientation = 1; 
+	    for(int j=0; j<numCols; j++)
+	    {
+		shapeArray.get(i).add(j, null);
+	    }
+	 }
+
+	//add the shape to the center top of the array
+	int center = numCols/2;
+
+	shapeArray.get(center-1).add(0, new Block(color));
+	shapeArray.get(center).add(0, new Block(color));
+	shapeArray.get(center).add(1, new Block(color));
+	shapeArray.get(center+1).add(1, new Block(color));
+ 
      }
 
      public void moveHorizontally()
@@ -34,25 +48,6 @@ public class ZShape extends TetrisShape
 
      public void rotateShape()
      {
-	blockArray.clear();
-
-	if(orientation == 1)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(null, new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-	     blockArray.add(2, new ArrayList<Block>(Arrays.asList(new Block(color))));
-
-	     orientation = 2;
-	}
-
-	else if(orientation == 2)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(null, new Block(color), new Block(color))));
-
-	     orientation = 1;
-	}
+	System.out.println("Figure out how to rotate later");
      }
 }

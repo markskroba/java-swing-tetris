@@ -7,26 +7,38 @@ import java.util.Arrays;
 public class Straight extends TetrisShape
 {
      private int orientation;
+     private ArrayList<ArrayList<Block>> shapeArray;
      private Color color;
 
      public Straight(Color color)
      {
 	 super(color);
 	 this.color = color;
+	 shapeArray = new ArrayList<ArrayList<Block>>();
+	 
+	 //create an empty array for the new shape
+	 for(int i=0; i<numRows; i++)
+	 {
+	    shapeArray.add(new ArrayList<Block>());
+	    for(int j=0; j<numCols; j++)
+	    {
+		shapeArray.get(i).add(j, null);
+	    }
+	 }
 
-	//set up initial straight shaped block using array
-	blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	blockArray.add(2, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	blockArray.add(3, new ArrayList<Block>(Arrays.asList(new Block(color))));
 
+	//add shape to the center top of shapeArray
+	int center = numCols/2;
 
-	orientation = 1; 
-     }
+	shapeArray.get(center).add(0, new Block(color));
+	shapeArray.get(center).add(1, new Block(color));
+	shapeArray.get(center).add(2, new Block(color));
+	shapeArray.get(center).add(3, new Block(color));
 
-     public void moveHorizontally()
+     
+     public void moveHorizontally(int direction)
      {
-	System.out.println("Figure how to move horizontally later");
+	System.out.println("Figure out how to move horizontally later");
      }
 
      public void moveVertically()
@@ -36,27 +48,7 @@ public class Straight extends TetrisShape
 
      public void rotateShape()
      {
-	blockArray.clear();
-
-	if(orientation == 1)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color), new Block(color), 
-					     new Block(color))));
-
-	     orientation = 2;
-	}
-
-	else if(orientation == 2)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	     blockArray.add(2, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	     blockArray.add(3, new ArrayList<Block>(Arrays.asList(new Block(color))));
-
-	     orientation = 1;
-	}
+	System.out.println("Figure out how to rotate later");	     
      }
 }
 

@@ -6,21 +6,36 @@ import java.util.Arrays;
 
 public class LShape extends TetrisShape
 {
-     private int orientation;
+     private ArrayList<ArrayList<Block>> shapeArray;
      private Color color;
 
      public LShape(Color color)
      {
 	 super(color);
+	 shapeArray = new ArrayList<ArrayList<Block>>();
 	 this.color = color;
 
-	//set up initial L shaped block using array
-	blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	blockArray.add(2, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
+	 //create an empty array for the new shape that is the same size as the TetrisArray
+	 for(int i=0; i<numRows; i++)
+	 {
+	    shapeArray.add(new ArrayList<Block>());
+	    
+	    for(int j=0; j<numCols; j++)
+	    {
+		shapeArray.get(i).add(j, null);
+	    }
+	 }
 
 
-	orientation = 1; 
+
+	//add the shape to the center top of the shapeArray
+	int center = numCols/2;
+		
+	shapeArray.get(center).add(0, new Block(color));
+	shapeArray.get(center+1).add(0, new Block(color));
+	shapeArray.get(center-1).add(0, new Block(color));
+	shapeArray.get(center-1).add(1, new Block(color)); 
+
      }
 
      public void moveHorizontally()
@@ -35,47 +50,8 @@ public class LShape extends TetrisShape
 
      public void rotateShape()
      {
-	blockArray.clear();
-
-	if(orientation == 1)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color), new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color))));
-
-	     orientation = 2;
-	}
-
-	else if(orientation == 2)
-	{
-
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(null, new Block(color))));
-	     blockArray.add(2, new ArrayList<Block>(Arrays.asList(null, new Block(color))));
-
-	     orientation = 3;
-	}
-
-	else if(orientation == 3)
-	{
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(null, null, new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color), new Block(color))));
-
-
-	     orientation = 4;
-	}
-
-	else if(orientation == 4)
-	{
-	     blockArray.add(0, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	     blockArray.add(1, new ArrayList<Block>(Arrays.asList(new Block(color))));
-	     blockArray.add(2, new ArrayList<Block>(Arrays.asList(new Block(color), new Block(color))));
-
-
-	     orientation = 1; 
-        }
-
-    }
+	System.out.println("Figure out how to rotate later");
+     }
 }
 
 
