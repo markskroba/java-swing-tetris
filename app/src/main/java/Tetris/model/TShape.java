@@ -22,7 +22,7 @@ public class TShape extends TetrisShape
 
 	    for(int j=0; j<numCols; j++)
 	    {
-		shapeArray.get(i).add(j, null):
+		shapeArray.get(i).add(j, null);
 	    }
 	 }
 
@@ -31,7 +31,7 @@ public class TShape extends TetrisShape
 	int center = numCols/2;
 
 	shapeArray.get(center).add(0, new Block(color));
-	shapeAray.get(center-1).add(1, new Block(color));
+	shapeArray.get(center-1).add(1, new Block(color));
 	shapeArray.get(center).add(1, new Block(color));
 	shapeArray.get(center+1).add(1, new Block(color));
 
@@ -39,7 +39,7 @@ public class TShape extends TetrisShape
 
      }
 
-     public void moveHorizontally()
+     public void moveHorizontally(int direction)
      {
 	System.out.println("Figure how to move horizontally later");
      }

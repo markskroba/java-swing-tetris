@@ -12,7 +12,7 @@ public abstract class TetrisShape extends TetrisArray
 	
     public abstract void moveVertically();
 
-    public abstract void moveHorizontally();
+    public abstract void moveHorizontally(int direction);
 
     public abstract void rotateShape();
 

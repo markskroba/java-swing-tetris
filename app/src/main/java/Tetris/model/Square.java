@@ -13,7 +13,7 @@ public class Square extends TetrisShape
      {
 	 super(color);
 	 this.color = color;
-	 shapeArray = new ArrayList<ArrayList<Block>();
+	 shapeArray = new ArrayList<ArrayList<Block>>();
 
 	 //create an empty array for the new shape
 	 for(int i=0; i<numRows; i++)
@@ -31,12 +31,12 @@ public class Square extends TetrisShape
 
 	 shapeArray.get(center).add(0, new Block(color));
 	 shapeArray.get(center+1).add(0, new Block(color));
-	 shapeArry.get(center).add(1, new Block(color));
+	 shapeArray.get(center).add(1, new Block(color));
 	 shapeArray.get(center+1).add(1, new Block(color));
 	 
      }
 
-     public void moveHorizontally()
+     public void moveHorizontally(int direction)
      {
 	System.out.println("Figure how to move horizontally later");
      }

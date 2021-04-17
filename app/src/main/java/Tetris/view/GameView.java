@@ -43,14 +43,7 @@ public class GameView extends JPanel //implements BlockObserver
         frame.setVisible(true);
     }
 
-    public void addTetrisShape(TetrisShape shape)
-    {
-	BlockController controller = new BlockController(shape);
-
-	gamePanel.addKeyListener(controller);
-	gamePanel.revalidate();
-	gamePanel.repaint();
-    }
+    
 /*
     @Override
     public void update(int row, int column)

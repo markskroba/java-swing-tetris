@@ -8,4 +8,9 @@ public class TetrisField extends TetrisArray
     {
 	super();
     }
+
+    public TetrisArray add(TetrisShape shape)
+    {
+	return null;
+    }
 }

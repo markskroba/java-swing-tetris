@@ -35,7 +35,7 @@ public class Straight extends TetrisShape
 	shapeArray.get(center).add(2, new Block(color));
 	shapeArray.get(center).add(3, new Block(color));
 
-     
+     } 
      public void moveHorizontally(int direction)
      {
 	System.out.println("Figure out how to move horizontally later");

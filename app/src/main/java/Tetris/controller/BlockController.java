@@ -1,8 +1,9 @@
 package controller;
 import model.*;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+
+import java.awt.event.*;
 import javax.swing.Timer;
+import java.awt.Color;
 
 public class BlockController implements KeyListener
 {
@@ -24,19 +25,19 @@ public class BlockController implements KeyListener
 	currentTetrisShape = factory.getShape(shape, color);
      }
 
-     public void setDifficulty(String difficulty)
+     public void setDifficulty(String difficulty, ActionListener l)
      {
-	if(difficulty.equals("easy");
+	if(difficulty.equals("easy"))
 	{
-	     timer = new Timer(500, ActionListener l);
+	     timer = new Timer(500, l);
 	}
-	else if(difficulty.equals("medium");
+	else if(difficulty.equals("medium"))
 	{
-	    timer = new Timer(400, ActionListener l);
+	    timer = new Timer(400, l);
 	}
-	else if(difficulty.equals("hard");
+	else if(difficulty.equals("hard"))
 	{
-	    timer = new Timer(300, ActionListener l);
+	    timer = new Timer(300, l);
 	}
 	timer.start();
      }
@@ -70,7 +71,7 @@ public class BlockController implements KeyListener
      {
 	//moves the currentTetrisShape down one cell, calls tetrisField.add(currentShape) to update currentState,
 	//then calls updateView(currentState)
-	currentTetrisSahpe.moveVertically();
+	currentTetrisShape.moveVertically();
 	updateState();	
      }
 

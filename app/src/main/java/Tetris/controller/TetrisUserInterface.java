@@ -3,5 +3,5 @@ import model.*;
 
 public interface TetrisUserInterface
 {
-    public TetrisArray updateView();
+    public TetrisArray updateView(TetrisArray gameScreen);
 }

@@ -28,7 +28,7 @@ public class Driver
 	GameView gameView = new GameView();
 	TetrisFactory factory = new TetrisFactory();
 	TetrisShape shape = factory.getShape("LShape", Color.RED);
-	gameView.addTetrisShape(shape);
+
 
 
 	

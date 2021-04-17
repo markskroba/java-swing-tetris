@@ -38,7 +38,7 @@ public class LShape extends TetrisShape
 
      }
 
-     public void moveHorizontally()
+     public void moveHorizontally(int direction)
      {
 	System.out.println("Figure how to move horizontally later");
      }
