@@ -10,10 +10,12 @@ public class TetrisArray
      public TetrisArray()
      {
 	this.blockArray = new ArrayList<ArrayList<Block>>();
+	numRows = 16;
+	numCols=9;
 	
      }
 
-     public void setRowsAndCols(int rows, int cols)
+     /*public void setRowsAndCols(int rows, int cols)
      {
 	for(int i=0; i<rows; i++)
 	{
@@ -27,7 +29,7 @@ public class TetrisArray
 
 	numRows = rows;
 	numCols = cols;
-     }
+     }*/
 
      public int getNumRows()
      {
