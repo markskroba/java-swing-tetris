@@ -4,17 +4,31 @@ import view.*;
 import controller.*;
 import java.awt.event.*;
 import java.awt.Color;
+import javax.swing.*;
 
 public class Driver
 {
     public static void main(String []args)
     {
+	//Demonstrates use case 1 
+	System.out.println("Use case 1 demonstrated by opening a JFrame with the main screen.");
+	MainScreenGUI mainScreenGUI = new MainScreenGUI();
 	
+	//Demonstrate use case 1
+
 	//Demonstrates use case 3
+	//consider putting some of this in an array list to reduce amount of code
+	//should add the steps to import serialized data here
+	System.out.println("Use case 3 demonstrated by instatiating three different high scores.");
+	System.out.println("The high scores are then passed to a controller and added to the display");
 	HighScores easy = new HighScores();
 	HighScores medium = new HighScores();
 	HighScores hard = new HighScores();
-	HighScoresGUI highScores = new HighScoresGUI(easy, medium, hard);
+	HighScoreController highScoresController = new HighScoreController();
+	HighScoresDisplay easyDisplay = new HighScoresDisplay("Easy", 200, highScoresController.getHighScores(easy));
+	HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
+	HighScoresDisplay hardDisplay = new HighScoresDisplay("Hard", 200, highScoresController.getHighScores(hard));
+	HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
 	highScores.addReturnToMainListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
@@ -24,24 +38,28 @@ public class Driver
 	
 
 
-	//Demonstrates use case 4 and 5
+	//Demonstrates use case 4
+	System.out.println("Demonstrating use case 4 by opening game screen and instantiating the necessary objects");
 	GameView gameView = new GameView();
-	TetrisFactory factory = new TetrisFactory();
-	TetrisShape shape = factory.getShape("LShape", Color.RED);
+	gameView.addTetrisShape("LShape", Color.RED);
+
+
+
+	
+	
+	//Demonstrates use case 5
+	
 
 
 
 	
 
-	//Demonstrates use case 1 and 2
-	MainScreenGUI mainScreenGUI = new MainScreenGUI();
-	
-	//Demonstrate use case 6 and 7
-	Scores score = new Scores();
-	
-	score.calculateScore(1);
-	score.getScore();
-
-	
+	//Demonstrate use case 6
+	//
+	//
+	//
+	//Demonstrates use case 7
+	//should use window adaptor to save and serialize the high score data
+		
     }
 }

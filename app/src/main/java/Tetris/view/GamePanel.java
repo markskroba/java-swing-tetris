@@ -9,26 +9,31 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-public class GamePanel extends JPanel {
+public class GamePanel implements TetrisUserInterface {
     
     protected BlockController controller;
+    protected JPanel gameArea;
 
     public GamePanel(int x, int y)
     {
-        FlowLayout layout = new FlowLayout();
+        gameArea = new JPanel();
+	FlowLayout layout = new FlowLayout();
         layout.setHgap(0);
         layout.setVgap(0);
-        this.setLayout(layout);
-        this.setPreferredSize(new Dimension(x, y));
+        gameArea.setLayout(layout);
+        gameArea.setPreferredSize(new Dimension(x, y));
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        this.setBorder(border);
+        gameArea.setBorder(border);
     }
 
-/*    public void addTetrisShape(TetrisShape shape)
+
+    public void updateView(TetrisArray gameScreen)
     {
-	controller = new BlockController(shape);
+	System.out.println("Draws the blocks represented by the TetrisArray");
+    }
 
-	this.addKeyListener(controller);
-
-    }*/
+    public JPanel getGameArea()
+    {
+	return gameArea;
+    }
 }

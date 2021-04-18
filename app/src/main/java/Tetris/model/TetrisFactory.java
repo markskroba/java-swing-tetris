@@ -5,6 +5,7 @@ public class TetrisFactory
 {
      public TetrisShape getShape(String shape, Color color)
      {
+	System.out.println("Creating a factory to make a specific shape object");
 	if(shape.equals("LShape"))
 	{
 	     return new LShape(color);

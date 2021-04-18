@@ -14,10 +14,10 @@ public class BlockController implements KeyListener
      protected TetrisFactory factory;
      protected Timer timer;
 
-     public BlockController(TetrisUserInterface ui, TetrisFactory factory)
+     public BlockController(TetrisUserInterface ui)
      {
 	this.ui = ui;
-	this.factory = factory;
+	this.factory = new TetrisFactory();
      }
 
      public void nextTetrisShape(String shape, Color color)
@@ -27,6 +27,8 @@ public class BlockController implements KeyListener
 
      public void setDifficulty(String difficulty, ActionListener l)
      {
+	System.out.println("Setting the difficulty by starting a timer with different periods");
+
 	if(difficulty.equals("easy"))
 	{
 	     timer = new Timer(500, l);
@@ -39,7 +41,8 @@ public class BlockController implements KeyListener
 	{
 	    timer = new Timer(300, l);
 	}
-	timer.start();
+	System.out.println("Tetris shape will move down based on timer");
+//	timer.start();
      }
 
      @Override
@@ -48,22 +51,22 @@ public class BlockController implements KeyListener
 	 if (e.getKeyCode() == KeyEvent.VK_RIGHT)
           {
 	      currentTetrisShape.moveHorizontally(1);
-	      updateState();
+//	      updateState();
           }
          else if (e.getKeyCode() == KeyEvent.VK_LEFT)
           {
 	      currentTetrisShape.moveHorizontally(-1);
-	      updateState();
+//	      updateState();
           }
           else if (e.getKeyCode() == KeyEvent.VK_UP)
           {
 	      currentTetrisShape.rotateShape();
-	      updateState();
+//	      updateState();
           }
           else if (e.getKeyCode() == KeyEvent.VK_DOWN)
           {
 	      currentTetrisShape.moveVertically();
-	      updateState();
+//	      updateState();
           }
      }
 
@@ -71,8 +74,9 @@ public class BlockController implements KeyListener
      {
 	//moves the currentTetrisShape down one cell, calls tetrisField.add(currentShape) to update currentState,
 	//then calls updateView(currentState)
-	currentTetrisShape.moveVertically();
-	updateState();	
+	System.out.println("Move the TetrisShape down based on timer");
+//	currentTetrisShape.moveVertically();
+//	updateState();	
      }
 
      public void updateState()

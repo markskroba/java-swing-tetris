@@ -31,10 +31,10 @@ public class LShape extends TetrisShape
 	//add the shape to the center top of the shapeArray
 	int center = numCols/2;
 		
-	shapeArray.get(center).add(0, new Block(color));
-	shapeArray.get(center+1).add(0, new Block(color));
-	shapeArray.get(center-1).add(0, new Block(color));
-	shapeArray.get(center-1).add(1, new Block(color)); 
+	shapeArray.get(0).add(center, new Block(color));
+	shapeArray.get(0).add(center+1, new Block(color));
+	shapeArray.get(0).add(center-1, new Block(color));
+	shapeArray.get(1).add(center-1, new Block(color)); 
 
      }
 
