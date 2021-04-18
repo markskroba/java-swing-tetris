@@ -47,8 +47,10 @@ public class GameView extends JPanel //implements BlockObserver
 	    }
 	};
 
+	ScoreController scoreController = new ScoreController();
 	controller = new BlockController(gamePanel);
 	controller.setDifficulty("easy", listener);
+	controller.addScoreController(scoreController);
 
 
 

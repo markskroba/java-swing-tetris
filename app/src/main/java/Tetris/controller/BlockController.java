@@ -14,6 +14,7 @@ public class BlockController implements KeyListener
      protected TetrisUserInterface ui;
      protected TetrisFactory factory;
      protected Timer timer;
+     protected ScoreController scoreController;
 
      public BlockController(TetrisUserInterface ui)
      {
@@ -78,7 +79,18 @@ public class BlockController implements KeyListener
 	//then calls updateView(currentState)
 	System.out.println("Move the TetrisShape down based on timer");
 //	currentTetrisShape.moveVertically();
+	ArrayList<Integer> fullRows = getFullRows();
+	if(fullRows != null)
+	{
+	    clearRow();
+	    scoreController.calculateScore(fullRows.size());
+	}
 //	updateState();	
+     }
+
+     public void addScoreController(ScoreController controller)
+     {
+	this.scoreController = controller;
      }
 
      public void updateState()
@@ -96,7 +108,7 @@ public class BlockController implements KeyListener
           }
      }
 
-     //a call for the driver so it can calculate the score
+
      public ArrayList<Integer> getFullRows()
      {
 	ArrayList<Integer> fullRows = new ArrayList<Integer>();
@@ -105,12 +117,11 @@ public class BlockController implements KeyListener
 	return fullRows;
      }
 
-
+    
      public void clearRow()
      {
 	System.out.println("Row is cleared when there are no null spaces and all blocks above move down");
 	tetrisField.clearRows();
-	//updateState();
      }
 
      @Override

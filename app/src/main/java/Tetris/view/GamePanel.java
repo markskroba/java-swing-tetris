@@ -29,7 +29,7 @@ public class GamePanel implements TetrisUserInterface {
 
     public void updateView(TetrisArray gameScreen)
     {
-	System.out.println("Draws the blocks represented by the TetrisArray");
+	System.out.println("updateView: Draws the blocks represented by the TetrisArray");
     }
 
     public JPanel getGameArea()

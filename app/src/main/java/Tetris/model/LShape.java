@@ -6,35 +6,18 @@ import java.util.Arrays;
 
 public class LShape extends TetrisShape
 {
-     private ArrayList<ArrayList<Block>> shapeArray;
-     private Color color;
 
      public LShape(Color color)
      {
 	 super(color);
-	 shapeArray = new ArrayList<ArrayList<Block>>();
-	 this.color = color;
 
-	 //create an empty array for the new shape that is the same size as the TetrisArray
-	 for(int i=0; i<numRows; i++)
-	 {
-	    shapeArray.add(new ArrayList<Block>());
-	    
-	    for(int j=0; j<numCols; j++)
-	    {
-		shapeArray.get(i).add(j, null);
-	    }
-	 }
-
-
-
-	//add the shape to the center top of the shapeArray
+	//add the shape to the center top of the this.blockArray
 	int center = numCols/2;
 		
-	shapeArray.get(0).add(center, new Block(color));
-	shapeArray.get(0).add(center+1, new Block(color));
-	shapeArray.get(0).add(center-1, new Block(color));
-	shapeArray.get(1).add(center-1, new Block(color)); 
+	this.blockArray.get(0).add(center, new Block(color));
+	this.blockArray.get(0).add(center+1, new Block(color));
+	this.blockArray.get(0).add(center-1, new Block(color));
+	this.blockArray.get(1).add(center-1, new Block(color)); 
 
      }
 
