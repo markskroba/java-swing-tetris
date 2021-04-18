@@ -14,7 +14,8 @@ public class Driver
 	System.out.println("Use case 1 demonstrated by opening a JFrame with the main screen.");
 	MainScreenGUI mainScreenGUI = new MainScreenGUI();
 	
-	//Demonstrate use case 1
+	//Demonstrating use case 2
+		System.out.println("Demonstrating use case 2 by clicking the \"Change level\" button");
 
 	//Demonstrates use case 3
 	//consider putting some of this in an array list to reduce amount of code
@@ -24,6 +25,7 @@ public class Driver
 	HighScores easy = new HighScores();
 	HighScores medium = new HighScores();
 	HighScores hard = new HighScores();
+	ScoreController scoreController = new ScoreController();
 	HighScoreController highScoresController = new HighScoreController();
 	HighScoresDisplay easyDisplay = new HighScoresDisplay("Easy", 200, highScoresController.getHighScores(easy));
 	HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
@@ -60,6 +62,5 @@ public class Driver
 	//
 	//Demonstrates use case 7
 	//should use window adaptor to save and serialize the high score data
-		
     }
 }

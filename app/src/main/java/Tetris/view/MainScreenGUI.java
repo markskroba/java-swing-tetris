@@ -6,6 +6,9 @@ import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import java.awt.event.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class MainScreenGUI
 {
 	private MainScreenFrame mainScreenFrame;
@@ -17,6 +20,9 @@ public class MainScreenGUI
 	private JLabel levelLabel;
 	private JLabel highScoreLabelTitle;
 	private JLabel highScoreLabel;
+
+	private ArrayList<String> difficultiesList = new ArrayList<String>();
+	private int difficultiesCounter;
 	
 	public MainScreenGUI()
 	{
@@ -57,16 +63,6 @@ public class MainScreenGUI
 		difficultyButton.setBounds(45,15,130,40);
 		difficultyButton.setHorizontalAlignment(JLabel.CENTER);
 		
-		difficultyButton.addActionListener(
-          new ActionListener(){
-            public void actionPerformed(ActionEvent e)
-            {
-                System.out.println("The difficulty button was clicked. The" 
-                + " difficulty will switch between easy, medium, and hard." 
-                + " These terms will be seen on the label to right of the button ");
-            }
-        });
-		
 		Border border2 = BorderFactory.createLineBorder(Color.black,2);
 		//levelLabel.setText("Intermediate");
 		levelLabel = new JLabel();
@@ -77,6 +73,34 @@ public class MainScreenGUI
 		levelLabel.setHorizontalAlignment(JLabel.CENTER);
 		levelLabel.setBackground(Color.white);
 		levelLabel.setOpaque(true);
+
+		difficultiesCounter = 0;
+		difficultiesList.add("easy");
+		difficultiesList.add("medium");
+		difficultiesList.add("hard");
+		levelLabel.setText(difficultiesList.get(difficultiesCounter));
+
+		difficultyButton.addActionListener(
+          new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("The difficulty button was clicked. The" 
+                + " difficulty will switch between easy, medium, and hard." 
+                + " These terms will be seen on the label to right of the button ");
+				
+				if (difficultiesCounter == 2)
+				{
+					difficultiesCounter = 0;
+					levelLabel.setText(difficultiesList.get(difficultiesCounter));
+				}
+				else 
+				{
+					levelLabel.setText(difficultiesList.get(difficultiesCounter + 1));
+					difficultiesCounter++;
+				}
+				System.out.println("Difficulty was changed to " + difficultiesList.get(difficultiesCounter));
+            }
+        });
 		
 		highScoreLabelTitle = new JLabel();
 		highScoreLabelTitle.setText("High Score");
@@ -107,5 +131,10 @@ public class MainScreenGUI
 		mainScreenFrame.add(difficultyPanel);
 		mainScreenFrame.add(scoreBoardPanel);
 		mainScreenFrame.setLayout(null);
+	}
+
+	public String getDifficulty()
+	{
+		return difficultiesList.get(difficultiesCounter);
 	}
 }
