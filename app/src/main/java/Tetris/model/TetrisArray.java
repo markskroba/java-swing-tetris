@@ -13,10 +13,11 @@ public class TetrisArray
 	numRows = 16;
 	numCols=9;
 	System.out.println("Creating an array that shows the current state of the game");
+          this.setRowsAndCols(numRows, numCols);
 	
      }
 
-     /*public void setRowsAndCols(int rows, int cols)
+     public void setRowsAndCols(int rows, int cols)
      {
 	for(int i=0; i<rows; i++)
 	{
@@ -30,7 +31,7 @@ public class TetrisArray
 
 	numRows = rows;
 	numCols = cols;
-     }*/
+     }
 
      public int getNumRows()
      {

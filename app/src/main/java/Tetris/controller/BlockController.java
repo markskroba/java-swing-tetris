@@ -18,6 +18,7 @@ public class BlockController implements KeyListener
      {
 	this.ui = ui;
 	this.factory = new TetrisFactory();
+          this.tetrisField = new TetrisField();
      }
 
      public void nextTetrisShape(String shape, Color color)
@@ -81,8 +82,17 @@ public class BlockController implements KeyListener
 
      public void updateState()
      {
+     // System.out.println(tetrisField);
 	currentState = tetrisField.add(currentTetrisShape);
-	ui.updateView(currentState);
+          if (currentState == null)
+          {
+               System.out.println("Updating view to null as a result of being unnable to add a new block");
+               ui.updateView(null);
+          } 
+          else 
+          {
+               ui.updateView(currentState);
+          }
      }
 
      @Override

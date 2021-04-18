@@ -14,7 +14,8 @@ public class GameView extends JPanel //implements BlockObserver
 {
     private int resolutionX;
     private int resolutionY;
-    private BlockController controller;
+    //Changed to show use case 7 in Driver
+    public BlockController controller;
     private GamePanel gamePanel;
     private JFrame frame;
 

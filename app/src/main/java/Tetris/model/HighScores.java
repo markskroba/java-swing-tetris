@@ -25,7 +25,8 @@ public class HighScores
 	Collections.sort(this.scores);
 	
 	//remove the last integer from the list
-	this.scores.remove(10);
+    // not sure about this line, while it crashed my code for use case 7
+	// this.scores.remove(10);
     }
 }
 
