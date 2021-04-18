@@ -8,9 +8,9 @@ public class HighScoreController
 {
     protected ArrayList<Integer> highScores;
 
-    public HighScoreController(ArrayList<Integer> scores)
+    public HighScoreController(HighScores scores)
     {
-        highScores = scores;
+        highScores = scores.getHighScores();
     }
 
     public DefaultListModel<Integer> getHighScores()
