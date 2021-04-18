@@ -4,6 +4,7 @@ import model.*;
 import java.awt.event.*;
 import javax.swing.Timer;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class BlockController implements KeyListener
 {
@@ -93,6 +94,23 @@ public class BlockController implements KeyListener
           {
                ui.updateView(currentState);
           }
+     }
+
+     //a call for the driver so it can calculate the score
+     public ArrayList<Integer> getFullRows()
+     {
+	ArrayList<Integer> fullRows = new ArrayList<Integer>();
+	fullRows = tetrisField.locateFullRow();
+
+	return fullRows;
+     }
+
+
+     public void clearRow()
+     {
+	System.out.println("Row is cleared when there are no null spaces and all blocks above move down");
+	tetrisField.clearRows();
+	//updateState();
      }
 
      @Override

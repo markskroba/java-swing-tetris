@@ -13,7 +13,6 @@ public class Block
     public Block(Color color)
     {
         blockColor = color;
-	System.out.println("Creating a block that essentially codes the color");
     }
 
     public Block()
