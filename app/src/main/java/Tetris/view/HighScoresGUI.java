@@ -11,28 +11,14 @@ import java.util.ArrayList;
 public class HighScoresGUI
 {
     private JFrame mainFrame;
-    public HighScoresDisplay easy;
-    public HighScoresDisplay medium;
-    public HighScoresDisplay hard;
     private JButton back;
 
-    public HighScoresGUI(HighScores easy, HighScores medium, HighScores hard)
+    public HighScoresGUI(HighScoresDisplay easy, HighScoresDisplay medium, HighScoresDisplay hard)
     {
 	//top level container
 	mainFrame = new JFrame("High Scores Display");
 	mainFrame.setPreferredSize(new Dimension(800, 900));
 	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	//get a scores arraylist for each set of high scores
-	ArrayList<Integer> easyScores = new ArrayList<Integer>(easy.getHighScores());
-	ArrayList<Integer> mediumScores = new ArrayList<Integer>(medium.getHighScores());
-	ArrayList<Integer> hardScores = new ArrayList<Integer>(hard.getHighScores());
-	
-	//set up objects for each high score column
-	this.easy = new HighScoresDisplay("Easy", 200, easyScores);
-	this.medium = new HighScoresDisplay("Medium", 200, mediumScores);
-	this.hard = new HighScoresDisplay("Hard", 200, hardScores);
-
 
 	// set up container for the high scores page
 	JPanel scoresColumns = new JPanel();
@@ -41,9 +27,9 @@ public class HighScoresGUI
 
 
 	//add the columns to the page
-	scoresColumns.add(this.easy, BorderLayout.WEST);
-        scoresColumns.add(this.medium, BorderLayout.CENTER);
-        scoresColumns.add(this.hard, BorderLayout.EAST);
+	scoresColumns.add(easy, BorderLayout.WEST);
+        scoresColumns.add(medium, BorderLayout.CENTER);
+        scoresColumns.add(hard, BorderLayout.EAST);
 
 
 	//make a container for the back to main page button

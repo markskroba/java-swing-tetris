@@ -1,6 +1,6 @@
 package view;
 import model.*;
-
+import controller.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class HighScoresDisplay extends JPanel
 {
      private JList<Integer> currentScores;
 
-     public HighScoresDisplay(String title, int width, ArrayList<Integer> scores)
+     public HighScoresDisplay(String title, int width, DefaultListModel<Integer> scores)
      {
 	//each set of high scores will be a separate panel.
 	//in the class that sets up the game display, HighScoresDisplay will
@@ -25,15 +25,9 @@ public class HighScoresDisplay extends JPanel
 	columnTitle.setAlignmentX((float)0.5);
 	columnTitle.setFont(new Font("Serif", Font.PLAIN, 36));
 
-	//Convert the passed in list array into a regular array
-	DefaultListModel<Integer> convertedScores = new DefaultListModel<Integer>();
-	for(int val: scores)
-	{
-	     convertedScores.addElement(val);
-	}
-
+	
 	//initialize the highscores using the passed in array
-	currentScores = new JList(convertedScores);
+	currentScores = new JList(scores);
 
 	//this.currentScores.setEnabled(false);
 	currentScores.setForeground(Color.black);
