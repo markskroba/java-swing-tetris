@@ -1,6 +1,6 @@
 package model;
-import java.awt.Color;
 
+import java.awt.Color;
 
 /*Creates an individual block that has a size and color. Each block also has two boolean
  * conditions isActive and isSettle that tell whether the block is currently showing 
@@ -8,26 +8,25 @@ import java.awt.Color;
  */
 public class Block 
 {
-    protected Color blockColor;
-	
-    public Block(Color color)
-    {
-        blockColor = color;
-    }
+	protected Color blockColor;
 
-    public Block()
-    {
-        blockColor = null;
-    }
+	public Block(Color color)
+	{
+		blockColor = color;
+	}
 
-    public void setColor(Color color)
-    {
-        blockColor = color;
-    }
+	public Block()
+	{
+		blockColor = null;
+	}
 
-    public Color getColor()
-    {
-        return blockColor;
-    }
-    	
+	public void setColor(Color color)
+	{
+		blockColor = color;
+	}
+
+	public Color getColor()
+	{
+		return blockColor;
+	}
 }

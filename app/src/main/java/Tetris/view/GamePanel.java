@@ -17,7 +17,7 @@ public class GamePanel implements TetrisUserInterface {
     public GamePanel(int x, int y)
     {
         gameArea = new JPanel();
-	FlowLayout layout = new FlowLayout();
+		FlowLayout layout = new FlowLayout();
         layout.setHgap(0);
         layout.setVgap(0);
         gameArea.setLayout(layout);
@@ -29,11 +29,11 @@ public class GamePanel implements TetrisUserInterface {
 
     public void updateView(TetrisArray gameScreen)
     {
-	System.out.println("updateView: Draws the blocks represented by the TetrisArray");
+		System.out.println("updateView: Draws the blocks represented by the TetrisArray");
     }
 
     public JPanel getGameArea()
     {
-	return gameArea;
+		return gameArea;
     }
 }
