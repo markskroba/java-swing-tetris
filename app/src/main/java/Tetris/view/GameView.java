@@ -55,7 +55,7 @@ public class GameView extends JPanel //implements BlockObserver
 
 
         frame.add(this);
-
+		//frame.addKeyListener(controller);
         frame.pack();
         frame.setVisible(true);
     }

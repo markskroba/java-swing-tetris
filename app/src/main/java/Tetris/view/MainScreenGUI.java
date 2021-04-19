@@ -20,6 +20,7 @@ public class MainScreenGUI
 	private JLabel levelLabel;
 	private JLabel highScoreLabelTitle;
 	private JLabel highScoreLabel;
+	private JButton seeHighScoresButton;
 
 	private ArrayList<String> difficultiesList = new ArrayList<String>();
 	private int difficultiesCounter;
@@ -117,6 +118,24 @@ public class MainScreenGUI
 		highScoreLabel.setBounds(25,50,100,45);
 		highScoreLabel.setHorizontalAlignment(JLabel.CENTER);
 		
+		Border border3 = BorderFactory.createLineBorder(Color.black,1);
+		seeHighScoresButton = new JButton();
+		seeHighScoresButton.setText("See All Highscores");
+		seeHighScoresButton.setForeground(new Color(255,255,255));
+		seeHighScoresButton.setFont(new Font("sansSerif",Font.PLAIN,20));
+		seeHighScoresButton.setBounds(285,550,200,50);
+		seeHighScoresButton.setBackground(new Color(65,169,76));
+		seeHighScoresButton.setOpaque(true);
+		seeHighScoresButton.setBorder(border3);
+		
+		seeHighScoresButton.addActionListener(
+          new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("Transition to high scores page");
+            }
+        });
+		
 		difficultyPanel = new DifficultyPanel();
 		difficultyPanel.add(difficultyButton);
 		difficultyPanel.add(levelLabel);
@@ -130,6 +149,7 @@ public class MainScreenGUI
 		mainScreenFrame.add(playButton);
 		mainScreenFrame.add(difficultyPanel);
 		mainScreenFrame.add(scoreBoardPanel);
+		mainScreenFrame.add(seeHighScoresButton);
 		mainScreenFrame.setLayout(null);
 	}
 
