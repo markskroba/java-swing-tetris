@@ -54,7 +54,7 @@ public class Driver
 		 * should use window adaptor to save and serialize the high score data
 		 * ^ not sure about that, since we save highscores when user closes a window
 		 */
-		gameView.addTetrisShape("LShape", Color.RED);
+
 		gameView.controller.updateState();
 		String difficulty = mainScreenGUI.getDifficulty();
 		if (difficulty == "easy")

@@ -31,9 +31,9 @@ public class BlockController implements KeyListener
 	}
 
 	/*
-	 *Calls the next shape that will be dropped
+	 *Changes the current shape
 	 */
-	public void nextTetrisShape(String shape, Color color)
+	public void addTetrisShape(String shape, Color color)
 	{
 		currentTetrisShape = factory.getShape(shape, color);
 	}

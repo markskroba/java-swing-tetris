@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.*;
+import java.util.Random;
 
 public class GameView extends JPanel //implements BlockObserver
 {
@@ -19,6 +20,9 @@ public class GameView extends JPanel //implements BlockObserver
 	public BlockController controller;
 	private GamePanel gamePanel;
 	private JFrame frame;
+
+	public enum Shape {LShape, SShape, TShape, Straight, Square, ZShape}
+	public enum ShapeColor {Red, Blue, Yellow, Green, Purple}
 
 	public GameView() 
 	{
@@ -52,18 +56,25 @@ public class GameView extends JPanel //implements BlockObserver
 		controller = new BlockController(gamePanel);
 		controller.setDifficulty("easy", listener);
 		controller.addScoreController(scoreController);
-
+		
+		while(controller.endGame() == false)
+		{
+			if(controller.continueMoving() == false)
+			{
+				controller.addTetrisShape("LShape", Color.RED);
+				//just have these as stand ins until the random enum is implemented
+			}
+		}
+		if(controller.endGame() == true)
+		{	
+			controller.endTimer();
+		}
 
 
 		frame.add(this);
 		//frame.addKeyListener(controller);
 		frame.pack();
 		frame.setVisible(true);
-	}
-
-	public void addTetrisShape(String shape, Color color)
-	{
-		controller.nextTetrisShape(shape, color);
 	}
 
 
