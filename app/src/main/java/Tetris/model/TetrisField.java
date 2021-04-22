@@ -23,7 +23,7 @@ public class TetrisField extends TetrisArray
 		// for the straight shape, also have a chance of overlapping at the center of row 4
 		int center = this.numCols/2;
 
-		if (this.getBlock(1, center) != null || (this.getBlock(1, center) != null && this.getBlock(3, center) !=null))
+		if (this.getBlock(1, center).getColor() != null || (this.getBlock(1, center).getColor() != null && this.getBlock(3, center).getColor() !=null))
 		{
 			continueMoving = false;
 			endGame = true;
@@ -35,7 +35,7 @@ public class TetrisField extends TetrisArray
 		{
 			for(int j=0; j<numCols; j++)
 			{
-				if(this.getBlock(i,j) != null && shape.getBlock(i,j) != null)
+				if(this.getBlock(i,j).getColor() != null && shape.getBlock(i,j).getColor() != null)
 				{
 					continueMoving = false;
 					return null;
@@ -82,7 +82,7 @@ public class TetrisField extends TetrisArray
 
 			for(int j=0; j<numCols; j++)
 			{
-				if(this.blockArray.get(i).get(j).equals(null))
+				if(this.blockArray.get(i).get(j).getColor() == null)
 				{
 					addRow = false;
 				}
@@ -106,7 +106,7 @@ public class TetrisField extends TetrisArray
 		{
 			for(int i=0; i < numCols; i++)
 			{
-				this.blockArray.get(row).set(i, null);
+				this.blockArray.get(row).get(i).setColor(null);
 			}
 		}
 		
@@ -121,7 +121,7 @@ public class TetrisField extends TetrisArray
 			{
 				for(int j=0; j < numCols; j++)
 				{
-					if(this.blockArray.get(i).get(j) != null && this.blockArray.get(i+1).get(j) == null)
+					if(this.blockArray.get(i).get(j).getColor() != null && this.blockArray.get(i+1).get(j).getColor() == null)
 					{
 						currentBlock = this.blockArray.get(i).get(j);
 						this.blockArray.get(i+1).set(j, currentBlock);
