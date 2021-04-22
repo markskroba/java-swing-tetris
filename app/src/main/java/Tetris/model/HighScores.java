@@ -24,9 +24,11 @@ public class HighScores
 		//sort the scores into order
 		Collections.sort(this.scores);
 
-		//remove the last integer from the list
-		// not sure about this line, while it crashed my code for use case 7
-		// this.scores.remove(10);
+		//remove the last integer from the list if longer than 10
+		if(scores.size() > 10)
+		{
+			this.scores.remove(10);
+		}
 	}
 }
 
