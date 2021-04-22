@@ -12,7 +12,7 @@ public class TetrisArray
 		this.blockArray = new ArrayList<ArrayList<Block>>();
 		numRows = 16;
 		numCols=9;
-		System.out.println("TetrisArray: Creating an array that shows the current state of the game");
+
 		this.setRowsAndCols(numRows, numCols);
 	}
 
@@ -24,7 +24,7 @@ public class TetrisArray
 
 			for(int j=0; j<cols; j++)
 			{
-				blockArray.get(i).add(j, null);	
+				blockArray.get(i).add(j, new Block());	
 			}	
 		}
 
@@ -40,6 +40,14 @@ public class TetrisArray
 	public int getNumColumns()
 	{
 		return numCols;
+	}
+
+	/*
+	 *Can adjust the array list of the tetris array
+	 */
+	public void adjust(int row, int col, Block block)
+	{
+		this.blockArray.get(row).set(col, block);
 	}
 
 	public Block getBlock(int row, int col)

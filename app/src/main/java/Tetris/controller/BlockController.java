@@ -11,27 +11,38 @@ public class BlockController implements KeyListener
 {
 	protected TetrisShape currentTetrisShape;
 	protected TetrisArray currentState;
+	protected TetrisArray previousState;
 	protected TetrisField tetrisField;
 	protected TetrisUserInterface ui;
 	protected TetrisFactory factory;
 	protected Timer timer;
 	protected ScoreController scoreController;
+	private boolean endGame;
+	private boolean continueMoving;
 
 	public BlockController(TetrisUserInterface ui)
 	{
 		this.ui = ui;
 		this.factory = new TetrisFactory();
 		this.tetrisField = new TetrisField();
+		this.previousState = new TetrisArray();
+		this.endGame = false;
+		this.continueMoving = true;
 	}
 
+	/*
+	 *Calls the next shape that will be dropped
+	 */
 	public void nextTetrisShape(String shape, Color color)
 	{
 		currentTetrisShape = factory.getShape(shape, color);
 	}
 
+	/*
+	 *Sets the difficulty by determining the period of the timer
+	 */
 	public void setDifficulty(String difficulty, ActionListener l)
 	{
-		System.out.println("Setting the difficulty by starting a timer with different periods");
 
 		if(difficulty.equals("easy"))
 		{
@@ -45,9 +56,8 @@ public class BlockController implements KeyListener
 		{
 			timer = new Timer(300, l);
 		}
-			System.out.println("Tetris shape will move down based on timer");
 			//timer.start();
-		}
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e)
@@ -56,64 +66,101 @@ public class BlockController implements KeyListener
 		{
 			currentTetrisShape.moveHorizontally(1);
 			System.out.println("Moving right");
-			//updateState();
+			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
 			currentTetrisShape.moveHorizontally(-1);
 			System.out.println("Moving left");
-			//updateState();
+			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_UP)
 		{
 			currentTetrisShape.rotateShape();
 			System.out.println("Rotate shape");
-		//updateState();
+			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
 			currentTetrisShape.moveVertically();
 			System.out.println("Moving down");
-			//updateState();
+			updateState();
 		}
 	}
-
+	
+	/*
+	 * moves the currentTetrisShape down one cell, updates the state, the checks for any full rows and updates
+	 * if there are any
+	 */
 	public void timerCallback()
 	{
-		//moves the currentTetrisShape down one cell, calls tetrisField.add(currentShape) to update currentState,
-		//then calls updateView(currentState)
-		System.out.println("Move the TetrisShape down based on timer");
-		//currentTetrisShape.moveVertically();
+		currentTetrisShape.moveVertically();
+		updateState();
 		ArrayList<Integer> fullRows = getFullRows();
 		if(fullRows != null)
 		{
 			clearRow();
 			scoreController.calculateScore(fullRows.size());
-		}
-		//updateState();	
+			updateState();
+		}	
 	}
 
+	/*
+	 *Adds a controller to keep track of the scores so that view does not interact directly
+	 */
 	public void addScoreController(ScoreController controller)
 	{
 		this.scoreController = controller;
 	}
 
+	/*
+	 *Updates the current state of the TetrisArray then calls updateView
+	 *this is done based on the timer and when the shape is affected by the keyListener
+	 */
 	public void updateState()
 	{
-		//System.out.println(tetrisField);
 		currentState = tetrisField.add(currentTetrisShape);
 		if (currentState == null)
 		{
-			System.out.println("Updating view to null as a result of being unnable to add a new block");
-			ui.updateView(null);
+			ui.updateView(previousState);
+			endGame = tetrisField.endGame();
+			continueMoving = tetrisField.continueMoving();
 		} 
 		else 
 		{
 			ui.updateView(currentState);
+			previousState = tetrisField.add(currentTetrisShape);
 		}
 	}
 
+	/*
+	 *Returns true when the game is over
+	 */
+	public boolean endGame()
+	{
+		return endGame;
+	}
 
+	/*
+	 *Returns false when a new block needs to be added
+	 */
+	public boolean continueMoving()
+	{
+		return continueMoving;
+	}
+
+	/*
+	 *Called when the game is over
+	 */
+	public void endTimer()
+	{
+		timer.stop();
+	}
+
+
+	/*
+	 *Locate any full rows each time the ui is updated so the score can be calculated
+	 */
 	public ArrayList<Integer> getFullRows()
 	{
 		ArrayList<Integer> fullRows = new ArrayList<Integer>();
@@ -123,9 +170,11 @@ public class BlockController implements KeyListener
 	}
 
 
+	/*
+	 *Clear the full rows and move all the blocks down
+	 */
 	public void clearRow()
 	{
-		System.out.println("Row is cleared when there are no null spaces and all blocks above move down");
 		tetrisField.clearRows();
 	}
 

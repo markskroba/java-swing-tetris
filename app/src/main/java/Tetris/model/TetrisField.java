@@ -31,7 +31,7 @@ public class TetrisField extends TetrisArray
 		}
 		
 		//Combining the TetrisField and TetrisShape starting from the bottom
-		for(int i=numRows-1; i>=0; i--)
+		for(int i=numRows-1; i==0; i--)
 		{
 			for(int j=0; j<numCols; j++)
 			{
@@ -44,11 +44,11 @@ public class TetrisField extends TetrisArray
 				{
 					if(this.getBlock(i,j) != null)
 					{
-						currentState.get(i).set(j, this.getBlock(i,j));
+						currentState.adjust(i, j, this.getBlock(i,j));
 					}
 					else if(shape.getBlock(i,j) != null)
 					{
-						currentState.get(i).set(j, shape.getBlock(i,j));
+						currentState.adjust(i, j, shape.getBlock(i,j));
 					}
 				}
 			}
@@ -64,12 +64,14 @@ public class TetrisField extends TetrisArray
 
 	public boolean continueMoving()
 	{
-		return contineMoving;
+		return continueMoving;
 	}
 
+	/*
+	 *Creates an arraylist containing the row number of each full row
+	 */
 	public ArrayList<Integer> locateFullRow()
 	{
-		System.out.println("locateFullRow scans the full array to find all the currently full rows");
 
 		ArrayList<Integer> rowsFilled = new ArrayList<Integer>();
 		boolean addRow = true;
@@ -94,11 +96,12 @@ public class TetrisField extends TetrisArray
 		return rowsFilled;
 	}
 
+	/*
+	 *Step through the list of full rows, call that row, and set each block in it to null
+	 */
 	public void clearRows()
 	{
 		ArrayList<Integer> fullRows = locateFullRow();
-		//step through the list of full rows to find each row
-		//then call that row, and step through the colums setting each block to null
 		for(int row: fullRows)
 		{
 			for(int i=0; i < numCols; i++)
@@ -106,9 +109,10 @@ public class TetrisField extends TetrisArray
 				this.blockArray.get(row).set(i, null);
 			}
 		}
+		
 		//iterate through the array starting from the the row above the lowest cleared row to move each block down
 		int numRowsCleared = fullRows.size();
-		int start = fullRows.get(numRowsCleared-1)-1;
+		int start = fullRows.get(numRowsCleared-1);
 		Block currentBlock;
 		
 		while(numRowsCleared != 0)
