@@ -4,25 +4,67 @@ import java.util.ArrayList;
 
 public class TetrisField extends TetrisArray
 {
+	protected boolean continueMoving;
+	protected boolean endGame;
+	
 	public TetrisField()
 	{
 		super();
-		System.out.println("Creating an array that shows all of the unmoving blocks");
+		endGame = false;
 	}
 
 	public TetrisArray add(TetrisShape shape)
 	{
-		// use case 7
-		// checks for two blocks (5th and 6th), since those are in the middle and we cannot add a new block with even one being placed already
-		if (this.getBlock(0, 4) != null || this.getBlock(0, 5) != null)
+		TetrisArray currentState = new TetrisArray();
+		continueMoving = true;
+
+		//Adding Block at the top
+		// checks for the center block at row 2 (since all the shapes have a block at the center of row 2)
+		// for the straight shape, also have a chance of overlapping at the center of row 4
+		int center = this.numCols/2;
+
+		if (this.getBlock(1, center) != null || (this.getBlock(1, center) != null && this.getBlock(3, center) !=null))
 		{
-			System.out.println("Can't add a new block, top row is blocked");
+			continueMoving = false;
+			endGame = true;
 			return null;
 		}
 		
-		System.out.println("Combining the TetrisField and the TetrisShape");
+		//Combining the TetrisField and TetrisShape starting from the bottom
+		for(int i=numRows-1; i>=0; i--)
+		{
+			for(int j=0; j<numCols; j++)
+			{
+				if(this.getBlock(i,j) != null && shape.getBlock(i,j) != null)
+				{
+					continueMoving = false;
+					return null;
+				}
+				else
+				{
+					if(this.getBlock(i,j) != null)
+					{
+						currentState.get(i).set(j, this.getBlock(i,j));
+					}
+					else if(shape.getBlock(i,j) != null)
+					{
+						currentState.get(i).set(j, shape.getBlock(i,j));
+					}
+				}
+			}
+		}
 		
-		return this;
+		return currentState;
+	}
+
+	public boolean endGame()
+	{
+		return endGame;
+	}
+
+	public boolean continueMoving()
+	{
+		return contineMoving;
 	}
 
 	public ArrayList<Integer> locateFullRow()
