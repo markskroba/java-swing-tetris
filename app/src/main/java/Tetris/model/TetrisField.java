@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class TetrisField extends TetrisArray
 {
@@ -17,21 +18,24 @@ public class TetrisField extends TetrisArray
 	{
 		TetrisArray currentState = new TetrisArray();
 		continueMoving = true;
+		System.out.println("Adding tetris shape to tetris field");
 
 		//Adding Block at the top
-		// checks for the center block at row 2 (since all the shapes have a block at the center of row 2)
+		// checks for the center block at row 0 (since all the shapes have a block at the center of row 0)
 		// for the straight shape, also have a chance of overlapping at the center of row 4
 		int center = this.numCols/2;
 
-		if (this.getBlock(1, center).getColor() != null || (this.getBlock(1, center).getColor() != null && this.getBlock(3, center).getColor() !=null))
+		if (this.getBlock(0, center).getColor() != null || (this.getBlock(1, center).getColor() != null && this.getBlock(3, center).getColor() !=null))
 		{
 			continueMoving = false;
 			endGame = true;
+			System.out.println("currentState array is null");
 			return null;
 		}
 		
-		//Combining the TetrisField and TetrisShape starting from the bottom
-		for(int i=numRows-1; i==0; i--)
+		//Combining the TetrisField and TetrisShape.
+		//If there is overlap, returns null (controller will return the previous state in that case)
+		for(int i=0; i<numRows; i++)
 		{
 			for(int j=0; j<numCols; j++)
 			{
@@ -42,13 +46,14 @@ public class TetrisField extends TetrisArray
 				}
 				else
 				{
-					if(this.getBlock(i,j) != null)
+					if(this.getBlock(i,j).getColor() != null)
 					{
-						currentState.adjust(i, j, this.getBlock(i,j));
+						currentState.adjust(i, j, new Block(this.getBlock(i,j).getColor()));
 					}
-					else if(shape.getBlock(i,j) != null)
+					else if(shape.getBlock(i,j).getColor() != null)
 					{
-						currentState.adjust(i, j, shape.getBlock(i,j));
+						currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+						System.out.println("Added shape block");
 					}
 				}
 			}
@@ -112,8 +117,8 @@ public class TetrisField extends TetrisArray
 		
 		//iterate through the array starting from the the row above the lowest cleared row to move each block down
 		int numRowsCleared = fullRows.size();
-		int start = fullRows.get(numRowsCleared-1);
-		Block currentBlock;
+		int start = fullRows.get(numRowsCleared-1)-1;
+		Color currentColor;
 		
 		while(numRowsCleared != 0)
 		{
@@ -123,8 +128,9 @@ public class TetrisField extends TetrisArray
 				{
 					if(this.blockArray.get(i).get(j).getColor() != null && this.blockArray.get(i+1).get(j).getColor() == null)
 					{
-						currentBlock = this.blockArray.get(i).get(j);
-						this.blockArray.get(i+1).set(j, currentBlock);
+						currentColor = this.blockArray.get(i).get(j).getColor();
+						this.blockArray.get(i).get(j).setColor(null);
+						this.blockArray.get(i+1).get(j).setColor(currentColor);
 					}
 
 				}
