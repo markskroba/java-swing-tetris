@@ -22,8 +22,9 @@ public class Scores
 		 float f = 1;   
 		 for (int i=0; i<rows; i++)
 		 {
-		    this.currentScore += 10*f;
-		    f += 0.5;
+		    float factor = 10*f;
+		    this.currentScore = this.currentScore + (int)factor;
+		    f = f + 0.5f;
 		
 		 }
 	}
