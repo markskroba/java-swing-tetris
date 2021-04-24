@@ -13,10 +13,10 @@ public class TShape extends TetrisShape
 		//add the shape to the center top of the shapeArray
 		int center = numCols/2;
 
-		this.blockArray.get(0).add(center, new Block(color));
-		this.blockArray.get(1).add(center-1, new Block(color));
-		this.blockArray.get(1).add(center, new Block(color));
-		this.blockArray.get(1).add(center+1, new Block(color));
+		this.blockArray.get(0).get(center).setColor(color);
+		this.blockArray.get(1).get(center-1).setColor(color);
+		this.blockArray.get(1).get(center).setColor(color);
+		this.blockArray.get(1).get(center+1).setColor(color);
 	}
 
 	public void moveHorizontally(int direction)

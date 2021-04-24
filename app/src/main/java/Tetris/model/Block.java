@@ -12,21 +12,21 @@ public class Block
 
 	public Block(Color color)
 	{
-		blockColor = color;
+		this.blockColor = color;
 	}
 
 	public Block()
 	{
-		blockColor = null;
+		this.blockColor = null;
 	}
 
 	public void setColor(Color color)
 	{
-		blockColor = color;
+		this.blockColor = color;
 	}
 
 	public Color getColor()
 	{
-		return blockColor;
+		return this.blockColor;
 	}
 }

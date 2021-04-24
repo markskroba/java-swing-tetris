@@ -53,7 +53,6 @@ public class TetrisField extends TetrisArray
 					else if(shape.getBlock(i,j).getColor() != null)
 					{
 						currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
-						System.out.println("Added shape block");
 					}
 				}
 			}

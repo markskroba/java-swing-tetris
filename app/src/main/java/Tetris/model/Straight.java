@@ -16,10 +16,10 @@ public class Straight extends TetrisShape
 		//add shape to the center top of shapeArray
 		int center = numCols/2;
 
-		this.blockArray.get(0).add(center, new Block(this.shapeColor));
-		this.blockArray.get(1).add(center, new Block(this.shapeColor));
-		this.blockArray.get(2).add(center, new Block(this.shapeColor));
-		this.blockArray.get(3).add(center, new Block(this.shapeColor));
+		this.blockArray.get(0).get(center).setColor(this.shapeColor);
+		this.blockArray.get(1).get(center).setColor(this.shapeColor);
+		this.blockArray.get(2).get(center).setColor(this.shapeColor);
+		this.blockArray.get(3).get(center).setColor(this.shapeColor);
 
 	} 
 	
