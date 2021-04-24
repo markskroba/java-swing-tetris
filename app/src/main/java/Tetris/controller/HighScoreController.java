@@ -4,6 +4,11 @@ import model.*;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 public class HighScoreController
 {
@@ -26,7 +31,38 @@ public class HighScoreController
 		{
 			convertedScores.addElement(val);
 		}
-			return convertedScores;
+		return convertedScores;
+	}
+
+	public void saveHighScores(String difficulty)
+		{}
+		
+	public HighScores loadHighScores(String difficulty)
+	{
+		try
+		{
+			FileInputStream fileInputStream = new FileInputStream(difficulty);
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			HighScores loadedHighScores = (HighScores)objectInputStream.readObject();
+			objectInputStream.close();
+			fileInputStream.close();
+
+			System.out.println("Found highscore!!!");
+			return loadedHighScores;
 		}
+		catch (IOException e)
+		{
+			//Usually could not find a file since no highscore was saved, creating a new one
+			HighScores loadedHighScores = new HighScores();
+			return loadedHighScores;
+		}
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Error loading HighScore object");
+			System.out.println(e.getMessage());
+		}
+	}
+
+
 }
 

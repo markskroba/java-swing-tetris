@@ -25,11 +25,13 @@ public class Driver
 		 */
 		System.out.println("Use case 3 demonstrated by instatiating three different high scores.");
 		System.out.println("The high scores are then passed to a controller and added to the display");
-		HighScores easy = new HighScores();
-		HighScores medium = new HighScores();
-		HighScores hard = new HighScores();
 		ScoreController scoreController = new ScoreController();
 		HighScoreController highScoresController = new HighScoreController();
+
+		HighScores easy = highScoresController.loadHighScores("easy");
+		HighScores medium = highScoresController.loadHighScores("medium");
+		HighScores hard = highScoresController.loadHighScores("hard");
+
 		HighScoresDisplay easyDisplay = new HighScoresDisplay("Easy", 200, highScoresController.getHighScores(easy));
 		HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
 		HighScoresDisplay hardDisplay = new HighScoresDisplay("Hard", 200, highScoresController.getHighScores(hard));
