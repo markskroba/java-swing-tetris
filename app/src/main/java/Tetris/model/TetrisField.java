@@ -7,7 +7,8 @@ public class TetrisField extends TetrisArray
 {
 	protected boolean continueMoving;
 	protected boolean endGame;
-	
+	protected TetrisShape prevShapePos;
+
 	public TetrisField()
 	{
 		super();
@@ -18,7 +19,6 @@ public class TetrisField extends TetrisArray
 	{
 		TetrisArray currentState = new TetrisArray();
 		continueMoving = true;
-		System.out.println("Adding tetris shape to tetris field");
 
 		//Adding Block at the top
 		// checks for the center block at row 0 (since all the shapes have a block at the center of row 0)
@@ -29,12 +29,12 @@ public class TetrisField extends TetrisArray
 		{
 			continueMoving = false;
 			endGame = true;
-			System.out.println("currentState array is null");
 			return null;
 		}
 		
 		//Combining the TetrisField and TetrisShape.
 		//If there is overlap, returns null (controller will return the previous state in that case)
+		//and permanently adds the shape to the field.
 		for(int i=0; i<numRows; i++)
 		{
 			for(int j=0; j<numCols; j++)
@@ -42,7 +42,8 @@ public class TetrisField extends TetrisArray
 				if(this.getBlock(i,j).getColor() != null && shape.getBlock(i,j).getColor() != null)
 				{
 					continueMoving = false;
-					return null;
+					cementShape(prevShapePos);
+					return currentState;
 				}
 				else
 				{
@@ -57,7 +58,7 @@ public class TetrisField extends TetrisArray
 				}
 			}
 		}
-		
+		prevShapePos = shape;
 		return currentState;
 	}
 
@@ -69,6 +70,22 @@ public class TetrisField extends TetrisArray
 	public boolean continueMoving()
 	{
 		return continueMoving;
+	}
+
+	//permanently adds the current shape to the field when it touches an occupied block
+	private void cementShape(TetrisShape shape)
+	{
+		for(int i=0; i<numRows; i++)
+		{
+			for(int j=0; j<numCols; j++)
+			{
+				if(shape.getBlock(i,j).getColor() != null)
+				{
+					this.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+				}
+			}
+		}
+		
 	}
 
 	/*

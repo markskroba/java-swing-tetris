@@ -120,6 +120,7 @@ public class BlockController implements KeyListener
 	public void updateState()
 	{
 		currentState = tetrisField.add(currentTetrisShape);
+		
 		if (currentState == null)
 		{
 			ui.updateView(previousState);

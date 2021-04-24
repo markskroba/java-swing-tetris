@@ -61,6 +61,8 @@ public class HighScoreController
 			System.out.println("Error loading HighScore object");
 			System.out.println(e.getMessage());
 		}
+
+		return null;
 	}
 
 

@@ -41,7 +41,7 @@ public class TetrisArray
 	{
 		return numCols;
 	}
-
+	
 	/*
 	 *Can adjust the array list of the tetris array
 	 */
