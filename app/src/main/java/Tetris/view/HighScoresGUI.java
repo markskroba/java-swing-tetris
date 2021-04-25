@@ -5,8 +5,8 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.event.*;
 
 public class HighScoresGUI
 {
@@ -37,6 +37,14 @@ public class HighScoresGUI
 		back.setPreferredSize(new Dimension(800, 50));
 		back.setFont(new Font("Serif", Font.BOLD, 30));
 		scoresColumns.add(back, BorderLayout.SOUTH);
+		back.addActionListener(
+          new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                mainFrame.dispose();
+                MainScreenGUI mainScreenGUI = new MainScreenGUI();
+            }
+        });
 
 		//make a label for the top of the page
 		JLabel pageTitle = new JLabel("HIGH SCORES");

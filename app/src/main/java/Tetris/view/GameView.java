@@ -56,7 +56,7 @@ public class GameView extends JPanel
 		controller = new BlockController(gamePanel);
 		controller.setDifficulty("easy", listener);
 		controller.addScoreController(scoreController);
-		
+		/*
 		while(controller.endGame() == false)
 		{
 			if(controller.continueMoving() == false)
@@ -65,6 +65,7 @@ public class GameView extends JPanel
 				//just have these as stand ins until the random enum is implemented
 			}
 		}
+		*/
 		if(controller.endGame() == true)
 		{	
 			controller.endTimer();

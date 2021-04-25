@@ -39,8 +39,9 @@ public class Driver
 		HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
 		HighScoresDisplay hardDisplay = new HighScoresDisplay("Hard", 200, highScoresController.getHighScores(hard));
 		
+		
+		//HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
 		/*
-		HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
 		highScores.addReturnToMainListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -52,7 +53,7 @@ public class Driver
 		
 		//Demonstrates use case 4
 		//System.out.println("Demonstrating use case 4 by opening game screen and instantiating the necessary objects");
-		GameView gameView = new GameView();
+		//GameView gameView = new GameView();
 		//gameView.controller.addTetrisShape("LShape", Color.RED);
 		
 
@@ -65,7 +66,7 @@ public class Driver
 		 * ^ not sure about that, since we save highscores when user closes a window
 		 */
 
-		gameView.controller.updateState();
+		//gameView.controller.updateState();
 		String difficulty = mainScreenGUI.getDifficulty();
 		if (difficulty == "easy")
 		{

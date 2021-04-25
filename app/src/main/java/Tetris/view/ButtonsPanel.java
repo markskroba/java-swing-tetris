@@ -9,6 +9,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.*;
 
+import controller.*;
+import model.*;
+
 public class ButtonsPanel extends JPanel
 {
     public ButtonsPanel(int x)
@@ -37,7 +40,7 @@ public class ButtonsPanel extends JPanel
             new ActionListener() {
                 public void actionPerformed(ActionEvent e)
                 {
-                    System.out.println("Quit to MainScreen");
+                    MainScreenGUI mainScreenGUI = new MainScreenGUI();
                 }
             }
         );
