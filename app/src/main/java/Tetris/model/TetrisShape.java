@@ -4,10 +4,12 @@ import java.awt.Color;
 
 public abstract class TetrisShape extends TetrisArray
 {
-	private int[] block1Position;
-	private int[] block2Position;
-	private int[] block3Position;
-	private int[] block4Position;
+	protected int[] block1Position;
+	protected int[] block2Position;
+	protected int[] block3Position;
+	protected int[] block4Position;
+	
+	protected int center;
 	
 	protected Color shapeColor;
 

@@ -49,12 +49,12 @@ public class Driver
 		});
 		*/
 		
-		/*
+		
 		//Demonstrates use case 4
 		//System.out.println("Demonstrating use case 4 by opening game screen and instantiating the necessary objects");
 		GameView gameView = new GameView();
-		gameView.controller.addTetrisShape("LShape", Color.RED);
-		*/
+		//gameView.controller.addTetrisShape("LShape", Color.RED);
+		
 
 		//Demonstrates use case 5
 
