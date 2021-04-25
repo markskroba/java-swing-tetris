@@ -12,23 +12,81 @@ public class ZShape extends TetrisShape
 
 
 		//add the shape to the center top of the array
-		int center = numCols/2;
+		center = numCols/2;
 
 		this.blockArray.get(0).get(center-1).setColor(color);
 		this.blockArray.get(0).get(center).setColor(color);
 		this.blockArray.get(1).get(center).setColor(color);
 		this.blockArray.get(1).get(center+1).setColor(color);
+		
+		block1Position[0] = 0;
+		block1Position[1] = center - 1;
+		
+		block2Position[0] = 0;
+		block2Position[1] = center;
+		
+		block3Position[0] = 1;
+		block3Position[1] = center;
+		
+		block4Position[0] = 1;
+		block4Position[1] = center + 1;
 
 	}
 
 	public void moveHorizontally(int direction)
 	{
-		System.out.println("Figure how to move horizontally later");
+		if(direction < 0)
+		{
+			this.blockArray.get(0).get(block1Position[1]).setColor(null);
+			this.blockArray.get(0).get(block2Position[1]).setColor(null);
+			this.blockArray.get(1).get(block3Position[1]).setColor(null);
+			this.blockArray.get(1).get(block4Position[1]).setColor(null);
+			
+			block1Position[1] = block1Position[1] - 1;
+			block2Position[1] = block1Position[1] - 1;
+			block3Position[1] = block3Position[1] - 1;
+			block4Position[1] = block4Position[1] - 1;
+			
+			this.blockArray.get(0).get(block1Position[1]).setColor(shapeColor);
+			this.blockArray.get(0).get(block2Position[1]).setColor(shapeColor);
+			this.blockArray.get(1).get(block3Position[1]).setColor(shapeColor);
+			this.blockArray.get(1).get(block4Position[1]).setColor(shapeColor);
+		}
+		else if(direction > 0)
+		{
+			this.blockArray.get(0).get(block1Position[1]).setColor(null);
+			this.blockArray.get(0).get(block2Position[1]).setColor(null);
+			this.blockArray.get(1).get(block3Position[1]).setColor(null);
+			this.blockArray.get(1).get(block4Position[1]).setColor(null);
+			
+			block1Position[1] = block1Position[1] + 1;
+			block2Position[1] = block1Position[1] + 1;
+			block3Position[1] = block3Position[1] + 1;
+			block4Position[1] = block4Position[1] + 1;
+			
+			this.blockArray.get(0).get(block1Position[1]).setColor(shapeColor);
+			this.blockArray.get(0).get(block2Position[1]).setColor(shapeColor);
+			this.blockArray.get(1).get(block3Position[1]).setColor(shapeColor);
+			this.blockArray.get(1).get(block4Position[1]).setColor(shapeColor);
+		}
 	}
 
 	public void moveVertically()
 	{
-		System.out.println("Figure how to move vertically later");
+		this.blockArray.get(0).get(block1Position[1]).setColor(null);
+		this.blockArray.get(0).get(block2Position[1]).setColor(null);
+		this.blockArray.get(1).get(block3Position[1]).setColor(null);
+		this.blockArray.get(1).get(block4Position[1]).setColor(null);
+		
+		block1Position[0] = block1Position[0] + 1;
+		block2Position[0] = block1Position[0] + 1;
+		block3Position[0] = block3Position[0] + 1;
+		block4Position[0] = block4Position[0] + 1;
+		
+		this.blockArray.get(block1Position[0]).get(block1Position[1]).setColor(shapeColor);
+		this.blockArray.get(block2Position[0]).get(block2Position[1]).setColor(shapeColor);
+		this.blockArray.get(block3Position[0]).get(block3Position[1]).setColor(shapeColor);
+		this.blockArray.get(block4Position[0]).get(block4Position[1]).setColor(shapeColor);
 	}
 
 	public void rotateShape()

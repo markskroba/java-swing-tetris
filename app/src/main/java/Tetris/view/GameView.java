@@ -76,6 +76,8 @@ public class GameView extends JPanel
 		//frame.addKeyListener(controller);
 		frame.pack();
 		frame.setVisible(true);
+		
+		
 	}
 
 

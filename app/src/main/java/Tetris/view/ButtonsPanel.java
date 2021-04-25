@@ -35,6 +35,8 @@ public class ButtonsPanel extends JPanel
             }
         );
         this.add(restartButton);
+        
+        /*
         JButton quitButton = new JButton("Quit");
         quitButton.addActionListener(
             new ActionListener() {
@@ -46,5 +48,6 @@ public class ButtonsPanel extends JPanel
         );
         quitButton.setPreferredSize(new Dimension(x / 2 - 10, 40 - 10));
         this.add(quitButton);
+        */
     }    
 }
