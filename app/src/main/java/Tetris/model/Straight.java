@@ -11,8 +11,6 @@ public class Straight extends TetrisShape
 	{
 		super(color);
 
-
-
 		//add shape to the center top of shapeArray
 		int center = numCols/2;
 

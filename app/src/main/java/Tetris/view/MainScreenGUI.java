@@ -10,6 +10,9 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import controller.*;
+import model.*;
+
 public class MainScreenGUI
 {
 	private MainScreenFrame mainScreenFrame;
@@ -53,8 +56,8 @@ public class MainScreenGUI
           new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("The play button was clicked. You will be" 
-                + "taken to the game screen");
+                mainScreenFrame.dispose();
+                GameView gameView = new GameView();
             }
         });
 		
@@ -133,7 +136,19 @@ public class MainScreenGUI
           new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("Transition to high scores page");
+                HighScoreController highScoresController = new HighScoreController();
+
+				HighScores easy = highScoresController.loadHighScores("easy");
+				HighScores medium = highScoresController.loadHighScores("medium");
+				HighScores hard = highScoresController.loadHighScores("hard");
+
+				HighScoresDisplay easyDisplay = new HighScoresDisplay("Easy", 200, highScoresController.getHighScores(easy));
+				HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
+				HighScoresDisplay hardDisplay = new HighScoresDisplay("Hard", 200, highScoresController.getHighScores(hard));
+                
+                mainScreenFrame.dispose();
+                
+				HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
             }
         });
 		

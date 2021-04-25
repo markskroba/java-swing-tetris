@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.awt.event.*;
 import java.util.Random;
 
-public class GameView extends JPanel //implements BlockObserver
+public class GameView extends JPanel
 {
 	private int resolutionX;
 	private int resolutionY;
