@@ -9,6 +9,10 @@ public abstract class TetrisShape extends TetrisArray
 	protected int[] block3Position;
 	protected int[] block4Position;
 	
+	protected int[][][] rotatedShapes;
+	
+	protected int currentRotation;
+	
 	protected int center;
 	
 	protected Color shapeColor;
@@ -22,9 +26,18 @@ public abstract class TetrisShape extends TetrisArray
 		block4Position = new int[2];
 	}
 
+	public abstract void createFirstRotation();
+	
+	public abstract void createSecondRotation();
+	
+	public abstract void createThirdRotation();
+	
+	public abstract void createFourthRotation();
+	
 	public abstract void moveVertically();
 
 	public abstract void moveHorizontally(int direction);
 
 	public abstract void rotateShape();
+	
 }

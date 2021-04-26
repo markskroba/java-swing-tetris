@@ -29,7 +29,36 @@ public class Square extends TetrisShape
 		
 		block4Position[0] = 1;
 		block4Position[1] = center + 1;
+		
+		rotatedShapes = new int[4][][];
+		
+		currentRotation = 0;
+		
+		createFirstRotation();
+		createSecondRotation();
+		createThirdRotation();
+		createFourthRotation();
 
+	}
+	
+	public void createFirstRotation()
+	{
+		//Does not apply to square
+	}
+	
+	public void createSecondRotation()
+	{
+		//Does not apply to square
+	}
+	
+	public void createThirdRotation()
+	{
+		//Does not apply to square
+	}
+	
+	public void createFourthRotation()
+	{
+		//Does not apply to square
 	}
 
 	public void moveHorizontally(int direction)
