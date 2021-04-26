@@ -56,17 +56,17 @@ public class TShape extends TetrisShape
 	
 	public void createSecondRotation()
 	{
-		block1Position[0] = block1Position[0];
-		block1Position[1] = block1Position[1];
+		block1Position[0] = block1Position[0] + 1;
+		block1Position[1] = block1Position[1] + 1;
 		
-		block2Position[0] = block1Position[0] + 1;
-		block2Position[1] = block1Position[1] - 1;
+		block2Position[0] = block1Position[0] - 1;
+		block2Position[1] = block1Position[1] + 1;
 		
-		block3Position[0] = block1Position[0] - 1;
-		block3Position[1] = block1Position[1] + 1;
+		block3Position[0] = block1Position[0];
+		block3Position[1] = block1Position[1];
 		
-		block4Position[0] = block1Position[0] - 2;
-		block4Position[1] = block1Position[1];
+		block4Position[0] = block1Position[0] + 1;
+		block4Position[1] = block1Position[1] - 1;
 		
 		//All the row combinations for the second rotation
 		rotatedShapes[1][0][0] = block1Position[0];
@@ -82,17 +82,17 @@ public class TShape extends TetrisShape
 	
 	public void createThirdRotation()
 	{
-		block1Position[0] = block1Position[0];
-		block1Position[1] = block1Position[1];
+		block1Position[0] = block1Position[0] + 1;
+		block1Position[1] = block1Position[1] - 1;
 		
-		block2Position[0] = block1Position[0] - 1;
-		block2Position[1] = block1Position[1] - 1;
+		block2Position[0] = block1Position[0] + 1;
+		block2Position[1] = block1Position[1] + 1;
 		
-		block3Position[0] = block1Position[0] + 1;
-		block3Position[1] = block1Position[1] + 1;
+		block3Position[0] = block1Position[0];
+		block3Position[1] = block1Position[1];
 		
-		block4Position[0] = block1Position[0];
-		block4Position[1] = block1Position[1] + 2;
+		block4Position[0] = block1Position[0] - 1;
+		block4Position[1] = block1Position[1] - 1;
 		
 		//All the row combinations for the third rotation
 		rotatedShapes[2][0][0] = block1Position[0];
@@ -108,17 +108,17 @@ public class TShape extends TetrisShape
 	
 	public void createFourthRotation()
 	{
-		block1Position[0] = block1Position[0];
-		block1Position[1] = block1Position[1];
+		block1Position[0] = block1Position[0] - 1;
+		block1Position[1] = block1Position[1] - 1;
 		
-		block2Position[0] = block1Position[0] - 1;
-		block2Position[1] = block1Position[1] + 1;
+		block2Position[0] = block1Position[0] + 1;
+		block2Position[1] = block1Position[1] - 1;
 		
-		block3Position[0] = block1Position[0] + 1;
-		block3Position[1] = block1Position[1] - 1;
+		block3Position[0] = block1Position[0];
+		block3Position[1] = block1Position[1];
 		
-		block4Position[0] = block1Position[0] + 2;
-		block4Position[1] = block1Position[1];
+		block4Position[0] = block1Position[0] - 1;
+		block4Position[1] = block1Position[1] + 1;
 		
 		//All the row combinations for the fourth rotation
 		rotatedShapes[3][0][0] = block1Position[0];
