@@ -30,8 +30,6 @@ public class Square extends TetrisShape
 		block4Position[0] = 1;
 		block4Position[1] = center + 1;
 		
-		rotatedShapes = new int[4][][];
-		
 		currentRotation = 0;
 		
 		createFirstRotation();

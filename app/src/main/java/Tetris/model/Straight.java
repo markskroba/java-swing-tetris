@@ -31,8 +31,6 @@ public class Straight extends TetrisShape
 		block4Position[0] = 3;
 		block4Position[1] = center;
 		
-		rotatedShapes = new int[4][][];
-		
 		currentRotation = 0;
 		
 		createFirstRotation();

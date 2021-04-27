@@ -20,10 +20,13 @@ public abstract class TetrisShape extends TetrisArray
 	public TetrisShape(Color color)
 	{
 		this.shapeColor = color;
+		
 		block1Position = new int[2];
 		block2Position = new int[2];
 		block3Position = new int[2];
 		block4Position = new int[2];
+		
+		rotatedShapes = new int[4][4][2];
 	}
 
 	public abstract void createFirstRotation();
@@ -39,5 +42,4 @@ public abstract class TetrisShape extends TetrisArray
 	public abstract void moveHorizontally(int direction);
 
 	public abstract void rotateShape();
-	
 }
