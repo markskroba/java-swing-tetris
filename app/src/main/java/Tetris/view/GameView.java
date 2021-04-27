@@ -24,7 +24,7 @@ public class GameView extends JPanel
 	public enum Shape {LShape, SShape, TShape, Straight, Square, ZShape}
 	public enum ShapeColor {Red, Blue, Yellow, Green, Purple}
 
-	public GameView() 
+	public GameView(String difficulty) 
 	{
 		// 9:16 ratio
 		// lightgrey as bg - 211 211 211
@@ -54,7 +54,8 @@ public class GameView extends JPanel
 
 		ScoreController scoreController = new ScoreController();
 		controller = new BlockController(gamePanel);
-		controller.setDifficulty("easy", listener);
+		// setting difficulty from value passed by MainScreenGUI
+		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
 		/*
 		while(controller.endGame() == false)
@@ -76,6 +77,8 @@ public class GameView extends JPanel
 		//frame.addKeyListener(controller);
 		frame.pack();
 		frame.setVisible(true);
+		// for future
+		// gamePanel.updateView(controller.getCurrentState());
 	}
 
 

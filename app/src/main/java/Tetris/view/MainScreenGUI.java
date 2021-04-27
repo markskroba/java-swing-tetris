@@ -57,7 +57,7 @@ public class MainScreenGUI
             public void actionPerformed(ActionEvent e)
             {
                 mainScreenFrame.dispose();
-                GameView gameView = new GameView();
+                GameView gameView = new GameView(difficultiesList.get(difficultiesCounter));
             }
         });
 		
@@ -172,5 +172,9 @@ public class MainScreenGUI
 	public String getDifficulty()
 	{
 		return difficultiesList.get(difficultiesCounter);
+	}
+
+	public void setDifficulty(String difficulty)
+	{
 	}
 }
