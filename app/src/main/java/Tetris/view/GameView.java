@@ -57,28 +57,37 @@ public class GameView extends JPanel
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
-		/*
-		while(controller.endGame() == false)
+
+		//add the first shape
+		controller.addTetrisShape("SShape", Color.BLUE);
+	
+		//show the frame before entering the while loop that controls the game
+		frame.add(this);
+		frame.pack();
+		frame.setVisible(true);
+
+
+		do
 		{
 			if(controller.continueMoving() == false)
 			{
 				controller.addTetrisShape("LShape", Color.RED);
 				//just have these as stand ins until the random enum is implemented
 			}
+			controller.timerCallback();
 		}
-		*/
+		while(controller.endGame() == false);
+		
 		if(controller.endGame() == true)
 		{	
 			controller.endTimer();
 		}
 
 
-		frame.add(this);
-		//frame.addKeyListener(controller);
+/*		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
-		// for future
-		// gamePanel.updateView(controller.getCurrentState());
+*/
 	}
 
 

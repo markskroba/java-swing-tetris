@@ -89,10 +89,7 @@ public class MainScreenGUI
           new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("The difficulty button was clicked. The" 
-                + " difficulty will switch between easy, medium, and hard." 
-                + " These terms will be seen on the label to right of the button ");
-				
+		
 				if (difficultiesCounter == 2)
 				{
 					difficultiesCounter = 0;
