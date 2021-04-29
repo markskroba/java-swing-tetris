@@ -56,7 +56,7 @@ public class BlockController implements KeyListener
 		{
 			timer = new Timer(300, l);
 		}
-			//timer.start();
+		timer.start();
 	}
 
 	@Override
