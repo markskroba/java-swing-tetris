@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 public class SidePanel extends JPanel {
+	protected NextFigurePanel nextFigurePanel;
+
 	public SidePanel(int x, int y)
 	{
 		this.setPreferredSize(new Dimension(x, y));
@@ -19,11 +21,16 @@ public class SidePanel extends JPanel {
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 		this.setBorder(border);
 
-		NextFigurePanel nextFigurePanel = new NextFigurePanel(x);
+		nextFigurePanel = new NextFigurePanel(x);
 		this.add(nextFigurePanel);
 		ButtonsPanel buttonsPanel = new ButtonsPanel(x);
 		this.add(buttonsPanel);
 		GameScoreBoardPanel scoreBoardPanel = new GameScoreBoardPanel(x);
 		this.add(scoreBoardPanel);
+	}
+
+	public void drawNextFigure(String shape, Color color)
+	{
+		nextFigurePanel.drawNextFigure(shape, color);
 	}
 }

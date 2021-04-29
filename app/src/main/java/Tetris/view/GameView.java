@@ -58,8 +58,14 @@ public class GameView extends JPanel
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
 
+		//randomly call the first two shapes (hard coded for now)
+		String firstShape = "ZShape";
+		Color firstColor = Color.BLUE;
+		String nextShape = "ZShape";
+		Color nextColor = Color.RED;
+
 		//add the first shape
-		controller.addTetrisShape("SShape", Color.BLUE);
+		controller.addTetrisShape(firstShape, firstColor);
 	
 		//show the frame before entering the while loop that controls the game
 		frame.add(this);
@@ -71,8 +77,13 @@ public class GameView extends JPanel
 		{
 			if(controller.continueMoving() == false)
 			{
-				controller.addTetrisShape("LShape", Color.RED);
+				controller.addTetrisShape(nextShape, nextColor);
 				//just have these as stand ins until the random enum is implemented
+				//Set up the next shape and its color
+				//nextShape = random call on a shape
+				//nextColor = random call on a color
+				sidePanel.drawNextFigure(nextShape, nextColor);
+
 			}
 			controller.timerCallback();
 		}
