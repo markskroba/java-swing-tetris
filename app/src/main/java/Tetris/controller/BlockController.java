@@ -6,10 +6,12 @@ import java.awt.event.*;
 import javax.swing.Timer;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BlockController implements KeyListener
 {
-	protected TetrisShape currentTetrisShape;
+	private TetrisShape currentTetrisShape;
+	private TetrisShape nextTetrisShape;
 	protected TetrisArray currentState;
 	protected TetrisArray previousState;
 	protected TetrisField tetrisField;
@@ -36,6 +38,35 @@ public class BlockController implements KeyListener
 	public void addTetrisShape(String shape, Color color)
 	{
 		currentTetrisShape = factory.getShape(shape, color);
+	}
+
+	/* 
+	* Returns a random tetris shape with a random color
+	*/
+	public TetrisShape createRandomTetrisShape()
+	{
+		String shapes[] = new String[]{"LShape", "ZShape", "SShape", "Square", "Square", "TShape", "Straight"};
+		Color colors[] = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
+
+		Random random = new Random();
+		int randomShape = random.nextInt(shapes.length);
+		int randomColor = random.nextInt(colors.length);
+		return factory.getShape(shapes[randomShape], colors[randomColor]);
+	}
+
+	public void addRandomTetrisShape()
+	{
+		currentTetrisShape = createRandomTetrisShape();
+	}
+
+	public void addRandomNextTetrisShape()
+	{
+		nextTetrisShape = createRandomTetrisShape();
+	}
+
+	public void setNextTetrisShapeAsCurrent()
+	{
+		currentTetrisShape = nextTetrisShape;
 	}
 
 	/*
