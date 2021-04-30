@@ -16,13 +16,11 @@ public class GameView extends JPanel
 	private int resolutionX;
 	private int resolutionY;
 	
-	//Changed to show use case 7 in Driver
+
 	public BlockController controller;
 	private GamePanel gamePanel;
 	private JFrame frame;
 
-	public enum Shape {LShape, SShape, TShape, Straight, Square, ZShape}
-	public enum ShapeColor {Red, Blue, Yellow, Green, Purple}
 
 	public GameView(String difficulty) 
 	{
@@ -40,12 +38,28 @@ public class GameView extends JPanel
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
 
-
+			
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
 				controller.timerCallback();
+
+				if(controller.continueMoving() == false)
+				{
+					//Set up the next shape and its color
+					String nextShape = controller.getRandomShape();
+					Color nextColor = controller.getRandomColor();
+					//sidePanel.drawNextFigure(nextShape, nextColor);
+
+					controller.addTetrisShape(nextShape, nextColor);
+				}
+
+				if(controller.endGame() == true)
+				{
+					controller.endTimer();
+				}
+
 			}
 		};
 
@@ -54,58 +68,19 @@ public class GameView extends JPanel
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
-
-		//randomly call the first two shapes (hard coded for now)
-		String firstShape = controller.getRandomShape();
-		Color firstColor = controller.getRandomColor();
-		String nextShape = controller.getRandomShape();
-		Color nextColor = controller.getRandomColor();
-
+		
+		//randomly call the first shape
+		String firstShape = getRandomShape();
+		Color firstColor = getRandomColor();
+		
 		//add the first shape
 		controller.addTetrisShape(firstShape, firstColor);
-	
-		//show the frame before entering the while loop that controls the game
+
+
 		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
 
-
-		do
-		{
-			if(controller.continueMoving() == false)
-			{
-				controller.addTetrisShape(nextShape, nextColor);
-				//just have these as stand ins until the random enum is implemented
-				//Set up the next shape and its color
-				//nextShape = random call on a shape
-				//nextColor = random call on a color
-				sidePanel.drawNextFigure(nextShape, nextColor);
-
-			}
-			controller.timerCallback();
-		}
-		while(controller.endGame() == false);
-		
-		if(controller.endGame() == true)
-		{	
-			controller.endTimer();
-		}
-
-
-/*		frame.add(this);
-		frame.pack();
-		frame.setVisible(true);
-*/
 	}
 
-
-	/*
-	@Override
-	public void update(int row, int column)
-	{
-	System.out.println("Updates the screen to show the block movement");
-	this.revalidate();
-	this.repaint();
-	}
-	*/
 }
