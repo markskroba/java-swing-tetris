@@ -70,8 +70,8 @@ public class GameView extends JPanel
 		controller.addScoreController(scoreController);
 		
 		//randomly call the first shape
-		String firstShape = getRandomShape();
-		Color firstColor = getRandomColor();
+		String firstShape = controller.getRandomShape();
+		Color firstColor = controller.getRandomColor();
 		
 		//add the first shape
 		controller.addTetrisShape(firstShape, firstColor);
