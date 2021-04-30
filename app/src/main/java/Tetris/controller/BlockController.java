@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class BlockController implements KeyListener
 {
-	private TetrisShape currentTetrisShape;
-	private TetrisShape nextTetrisShape;
+	protected TetrisShape currentTetrisShape;
+	protected TetrisShape nextTetrisShape;
 	protected TetrisArray currentState;
 	protected TetrisArray previousState;
 	protected TetrisField tetrisField;
@@ -40,34 +40,22 @@ public class BlockController implements KeyListener
 		currentTetrisShape = factory.getShape(shape, color);
 	}
 
-	/* 
-	* Returns a random tetris shape with a random color
-	*/
-	public TetrisShape createRandomTetrisShape()
+	public String getRandomShape()
 	{
 		String shapes[] = new String[]{"LShape", "ZShape", "SShape", "Square", "Square", "TShape", "Straight"};
-		Color colors[] = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
-
 		Random random = new Random();
 		int randomShape = random.nextInt(shapes.length);
+		return shapes[randomShape];
+	}
+
+	public Color getRandomColor()
+	{
+		Color colors[] = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
+		Random random = new Random();
 		int randomColor = random.nextInt(colors.length);
-		return factory.getShape(shapes[randomShape], colors[randomColor]);
+		return colors[randomColor];
 	}
 
-	public void addRandomTetrisShape()
-	{
-		currentTetrisShape = createRandomTetrisShape();
-	}
-
-	public void addRandomNextTetrisShape()
-	{
-		nextTetrisShape = createRandomTetrisShape();
-	}
-
-	public void setNextTetrisShapeAsCurrent()
-	{
-		currentTetrisShape = nextTetrisShape;
-	}
 
 	/*
 	 *Sets the difficulty by determining the period of the timer

@@ -26,9 +26,6 @@ public class GameView extends JPanel
 
 	public GameView(String difficulty) 
 	{
-		// 9:16 ratio
-		// lightgrey as bg - 211 211 211
-		// 
 		resolutionX = 800;
 		resolutionY = 900;
 
@@ -59,10 +56,10 @@ public class GameView extends JPanel
 		controller.addScoreController(scoreController);
 
 		//randomly call the first two shapes (hard coded for now)
-		String firstShape = "ZShape";
-		Color firstColor = Color.BLUE;
-		String nextShape = "ZShape";
-		Color nextColor = Color.RED;
+		String firstShape = controller.getRandomShape();
+		Color firstColor = controller.getRandomColor();
+		String nextShape = controller.getRandomShape();
+		Color nextColor = controller.getRandomColor();
 
 		//add the first shape
 		controller.addTetrisShape(firstShape, firstColor);
