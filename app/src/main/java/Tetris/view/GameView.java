@@ -32,7 +32,7 @@ public class GameView extends JPanel
 		this.setPreferredSize(new Dimension(resolutionX, resolutionY));
 		
 		ScoreController scoreController = new ScoreController();
-		controller = new BlockController(gamePanel);
+
 
 		//action listener for the restart button on the side panel
 		ActionListener restart = new ActionListener()
@@ -45,6 +45,10 @@ public class GameView extends JPanel
 		};
 		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
 		this.add(gamePanel.getGameArea());
+		
+
+		controller = new BlockController(gamePanel);
+
 
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart);
 		this.add(sidePanel);
