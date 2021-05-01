@@ -198,6 +198,12 @@ public class BlockController implements KeyListener
 		tetrisField.clearRows();
 	}
 
+	public void restartGame()
+	{
+		tetrisField.clearField();
+		updateState();
+	}
+
 	@Override
 	public void keyReleased(KeyEvent e)
 	{

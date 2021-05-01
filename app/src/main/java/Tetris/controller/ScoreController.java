@@ -20,4 +20,9 @@ public class ScoreController
 	{
 		currentScore.calculateScore(rows);
 	}
+
+	public void resetScore()
+	{
+		currentScore.resetScore();
+	}
 }

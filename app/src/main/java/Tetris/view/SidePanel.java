@@ -3,7 +3,7 @@ package view;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-
+import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -11,7 +11,7 @@ import java.awt.FlowLayout;
 public class SidePanel extends JPanel {
 	protected NextFigurePanel nextFigurePanel;
 
-	public SidePanel(int x, int y)
+	public SidePanel(int x, int y, ActionListener restart)
 	{
 		this.setPreferredSize(new Dimension(x, y));
 		FlowLayout layout = new FlowLayout();
@@ -23,7 +23,7 @@ public class SidePanel extends JPanel {
 
 		nextFigurePanel = new NextFigurePanel(x);
 		this.add(nextFigurePanel);
-		ButtonsPanel buttonsPanel = new ButtonsPanel(x);
+		ButtonsPanel buttonsPanel = new ButtonsPanel(x, restart);
 		this.add(buttonsPanel);
 		GameScoreBoardPanel scoreBoardPanel = new GameScoreBoardPanel(x);
 		this.add(scoreBoardPanel);

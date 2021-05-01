@@ -30,15 +30,27 @@ public class GameView extends JPanel
 		frame = new JFrame("Tetris");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(resolutionX, resolutionY));
+		
+		ScoreController scoreController = new ScoreController();
+		controller = new BlockController(gamePanel);
 
+		//action listener for the restart button on the side panel
+		ActionListener restart = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				controller.restartGame();
+				scoreController.resetScore();
+			}
+		};
 		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
 		this.add(gamePanel.getGameArea());
 
-		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY);
+		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
 
-			
+		//action listener for the timer (passed to controller when setting difficulty)	
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -50,7 +62,7 @@ public class GameView extends JPanel
 					//Set up the next shape and its color
 					String nextShape = controller.getRandomShape();
 					Color nextColor = controller.getRandomColor();
-					//sidePanel.drawNextFigure(nextShape, nextColor);
+					sidePanel.drawNextFigure(nextShape, nextColor);
 
 					controller.addTetrisShape(nextShape, nextColor);
 				}
@@ -63,8 +75,7 @@ public class GameView extends JPanel
 			}
 		};
 
-		ScoreController scoreController = new ScoreController();
-		controller = new BlockController(gamePanel);
+
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
@@ -75,8 +86,7 @@ public class GameView extends JPanel
 		
 		//add the first shape
 		controller.addTetrisShape(firstShape, firstColor);
-
-
+		
 		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
