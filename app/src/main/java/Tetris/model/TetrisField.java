@@ -162,4 +162,15 @@ public class TetrisField extends TetrisArray
 			numRowsCleared--;
 		}
 	}
+
+	public void clearField()
+	{
+		for (int i=0; i<numRows; i++)
+		{
+			for(int j=0; j<numCols; j++)
+			{
+				this.blockArray.get(i).get(j).setColor(null);
+			}
+		}
+	}
 }
