@@ -85,18 +85,14 @@ public class NextFigurePanel extends JPanel
 			nextShape.get(3).get(1).setColor(color);
 		}
 		
-		int side = length/4;
+
 		for (int i=0; i<4; i++)
 		{
 			for (int j=0; j<4; j++)
 			{
 				if(nextShape.get(i).get(j).getColor() != null)
 				{		
-					JPanel block = new JPanel();
-					block.setPreferredSize(new Dimension(side,side));
-					block.setBackground(color);
-					Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
-					block.setBorder(border);
+					ViewBlock block = new ViewBlock(color);				
 					this.add(block);
 					this.revalidate();
 					this.repaint();
