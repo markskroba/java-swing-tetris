@@ -175,25 +175,16 @@ public class ZShape extends TetrisShape
 		this.blockArray.get(1).get(block3Position[1]).setColor(null);
 		this.blockArray.get(1).get(block4Position[1]).setColor(null);
 		
-		while(block1Position[0] < blockArray.size()){
+		while(block3Position[0] < 14){
 			block1Position[0] = block1Position[0] + 1;
-		}
-		while(block2Position[0] < blockArray.size()){
 			block2Position[0] = block1Position[0] + 1;
-		}
-		
-		while(block3Position[0] < blockArray.size()){
 			block3Position[0] = block3Position[0] + 1;
-		}
-		
-		while(block4Position[0] < blockArray.size()){
 			block4Position[0] = block4Position[0] + 1;
+			this.blockArray.get(block1Position[0]).get(block1Position[1]).setColor(shapeColor);
+			this.blockArray.get(block2Position[0]).get(block2Position[1]).setColor(shapeColor);
+			this.blockArray.get(block3Position[0]).get(block3Position[1]).setColor(shapeColor);
+			this.blockArray.get(block4Position[0]).get(block4Position[1]).setColor(shapeColor);
 		}
-		
-		this.blockArray.get(block1Position[0]).get(block1Position[1]).setColor(shapeColor);
-		this.blockArray.get(block2Position[0]).get(block2Position[1]).setColor(shapeColor);
-		this.blockArray.get(block3Position[0]).get(block3Position[1]).setColor(shapeColor);
-		this.blockArray.get(block4Position[0]).get(block4Position[1]).setColor(shapeColor);
 	}
 
 	public void rotateShape()
