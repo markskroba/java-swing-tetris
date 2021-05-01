@@ -34,7 +34,6 @@ public class GamePanel implements TetrisUserInterface {
 
 
     public void updateView(TetrisArray gameScreen) {
-        System.out.println("Found " + this.gameArea.getComponentCount() + " components");
         this.cleanUp();
 
         // We might need to reverse those two loops.
@@ -76,7 +75,6 @@ public class GamePanel implements TetrisUserInterface {
     private void cleanUp()
     {
         int numRows = this.gameArea.getComponentCount();
-        System.out.println("Found " + numRows + " components");
         this.gameArea.removeAll();
     }
     public JPanel getGameArea()
