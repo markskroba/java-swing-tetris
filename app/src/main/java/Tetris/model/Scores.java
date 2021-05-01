@@ -28,4 +28,9 @@ public class Scores
 		
 		 }
 	}
+
+	public void resetScore()
+	{
+		currentScore = 0;
+	}
 }
