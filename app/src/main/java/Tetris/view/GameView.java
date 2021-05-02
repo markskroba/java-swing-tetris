@@ -89,7 +89,8 @@ public class GameView extends JPanel
 		Color firstColor = controller.getRandomColor();
 		
 		//add the first shape
-		controller.addTetrisShape(firstShape, firstColor);
+		controller.addTetrisShape("SShape", firstColor);
+		controller.updateState();
 		
 		frame.add(this);
 		frame.pack();

@@ -65,15 +65,15 @@ public class BlockController implements KeyListener
 
 		if(difficulty.equals("easy"))
 		{
-			timer = new Timer(500, l);
+			timer = new Timer(5000, l);
 		}
 		else if(difficulty.equals("medium"))
 		{
-			timer = new Timer(400, l);
+			timer = new Timer(4000, l);
 		}
 		else if(difficulty.equals("hard"))
 		{
-			timer = new Timer(300, l);
+			timer = new Timer(3000, l);
 		}
 		timer.start();
 	}
@@ -116,7 +116,7 @@ public class BlockController implements KeyListener
 		currentTetrisShape.moveVertically();
 		updateState();
 		ArrayList<Integer> fullRows = getFullRows();
-		if(fullRows != null)
+		if(fullRows.size() >= 1)
 		{
 			clearRow();
 			scoreController.calculateScore(fullRows.size());

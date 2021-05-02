@@ -50,10 +50,12 @@ public class TetrisField extends TetrisArray
 					if(this.getBlock(i,j).getColor() != null)
 					{
 						currentState.adjust(i, j, new Block(this.getBlock(i,j).getColor()));
+
 					}
 					else if(shape.getBlock(i,j).getColor() != null)
 					{
 						currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+
 					}
 				}
 			}
