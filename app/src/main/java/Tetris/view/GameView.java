@@ -66,7 +66,7 @@ public class GameView extends JPanel
 					//Set up the next shape and its color
 					String nextShape = controller.getRandomShape();
 					Color nextColor = controller.getRandomColor();
-					sidePanel.drawNextFigure(nextShape, nextColor);
+					//sidePanel.drawNextFigure(nextShape, nextColor);
 
 					controller.addTetrisShape(nextShape, nextColor);
 				}

@@ -137,17 +137,10 @@ public class BlockController implements KeyListener
 
 		currentState = tetrisField.add(currentTetrisShape);
 		
-		if (currentState == null)
-		{
-			ui.updateView(previousState);
-			endGame = tetrisField.endGame();
-			continueMoving = tetrisField.continueMoving();
-		} 
-		else 
-		{
-			ui.updateView(currentState);
-			previousState = tetrisField.add(currentTetrisShape);
-		}
+		continueMoving = tetrisField.continueMoving();
+		endGame = tetrisField.endGame();
+
+		ui.updateView(currentState);
 	}
 
 	/*

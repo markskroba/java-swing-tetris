@@ -8,6 +8,7 @@ public class TetrisField extends TetrisArray
 	protected boolean continueMoving;
 	protected boolean endGame;
 	protected TetrisShape prevShapePos;
+	protected TetrisArray prevState;
 
 	public TetrisField()
 	{
@@ -29,7 +30,7 @@ public class TetrisField extends TetrisArray
 		{
 			continueMoving = false;
 			endGame = true;
-			return null;
+			return prevState;
 		}
 		
 		//Combining the TetrisField and TetrisShape.
@@ -43,7 +44,8 @@ public class TetrisField extends TetrisArray
 				{
 					continueMoving = false;
 					cementShape(prevShapePos);
-					return currentState;
+					return prevState;
+
 				}
 				else
 				{
@@ -60,7 +62,16 @@ public class TetrisField extends TetrisArray
 				}
 			}
 		}
+		for (int k=0; k<numCols; k++)
+		{
+			if(shape.getBlock(15, k).getColor() != null)
+			{
+				continueMoving = false;
+				cementShape(shape);
+			}
+		}
 		prevShapePos = shape;
+		prevState = currentState;
 		return currentState;
 	}
 
