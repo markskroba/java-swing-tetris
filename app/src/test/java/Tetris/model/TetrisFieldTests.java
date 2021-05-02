@@ -24,15 +24,33 @@ public class TetrisFieldTests
 		assertFalse("Error: endGame not initially false", field.endGame());
 	}
 
-/*Currently it seems that LShape is not working properly (block is null at 0, center and should not be
- * 	@Test
-	public void testAddNewShape()
+
+  	@Test
+	public void testInitialAddNewShape()
 	{
 		TetrisArray array = field.add(shape);
 		int center = shape.getNumColumns()/2;
 		assertEquals("Error: New Shape not added properly", Color.BLUE, array.getBlock(0, center).getColor());
 	}
-*/
+
+	@Test
+	public void testNoAdditionalBlocksAddShape()
+	{
+		TetrisArray array = field.add(shape);
+		boolean works = true;
+		for(int i=2; i<16; i++)
+		{
+			for (int j=0; j<9; j++)
+			{
+				if(array.getBlock(i,j).getColor() != null)
+				{
+					works = false;
+				}
+			}
+		}
+		assertTrue("Add method populates additonal blocks", works);
+	}
+
 	@Test
 	public void testContMovingAfterNewShape()
 	{
