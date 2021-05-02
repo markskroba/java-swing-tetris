@@ -12,8 +12,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 public class GamePanel implements TetrisUserInterface {
-    
-    protected BlockController controller;
+
     protected JPanel gameArea;
     protected int x;
     protected int y;
@@ -49,7 +48,7 @@ public class GamePanel implements TetrisUserInterface {
                 Color modelColor = modelBlock.getColor();
                 if (modelColor != null)
                 {
-//                    System.out.println("Block on " + row + " " + column);
+//                  System.out.println("Block on " + row + " " + column);
                     ViewBlock viewBlock = new ViewBlock(modelColor);
                     rowPanel.add(viewBlock);
                 }

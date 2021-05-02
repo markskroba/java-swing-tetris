@@ -95,7 +95,8 @@ public class GameView extends JPanel
 		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
-
+		frame.addKeyListener(controller);
+		frame.setFocusable(true);
 	}
 
 }
