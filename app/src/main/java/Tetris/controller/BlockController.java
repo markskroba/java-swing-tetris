@@ -65,15 +65,15 @@ public class BlockController implements KeyListener
 
 		if(difficulty.equals("easy"))
 		{
-			timer = new Timer(5000, l);
+			timer = new Timer(3000, l);
 		}
 		else if(difficulty.equals("medium"))
 		{
-			timer = new Timer(4000, l);
+			timer = new Timer(2000, l);
 		}
 		else if(difficulty.equals("hard"))
 		{
-			timer = new Timer(3000, l);
+			timer = new Timer(1000, l);
 		}
 		timer.start();
 	}
@@ -84,25 +84,21 @@ public class BlockController implements KeyListener
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
 			currentTetrisShape.moveHorizontally(1);
-			System.out.println("Moving right");
 			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
 			currentTetrisShape.moveHorizontally(-1);
-			System.out.println("Moving left");
 			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_UP)
 		{
 			currentTetrisShape.rotateShape();
-			System.out.println("Rotate shape");
 			updateState();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
 			currentTetrisShape.moveVertically();
-			System.out.println("Moving down");
 			updateState();
 		}
 	}

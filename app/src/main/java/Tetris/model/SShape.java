@@ -135,7 +135,7 @@ public class SShape extends TetrisShape
 	*/
 	}
 
-	public void moveHorizontally(int direction)
+/*	public void moveHorizontally(int direction)
 	{
 		boolean canMove = true;
 
@@ -152,7 +152,8 @@ public class SShape extends TetrisShape
 
 			if (canMove == true)
 			{
-				for (int i=0; i<numRows; i++)
+
+			for (int i=0; i<numRows; i++)
 				{
 					for (int j=1; j<numCols; j++)
 					{
@@ -224,22 +225,44 @@ public class SShape extends TetrisShape
 		}
 		
 	}
-
+*/
 	public void rotateShape()
 	{
-	/*	currentRotation++;
-		
-		if(currentRotation > 3)
+		int i = 0;
+		boolean located = false;
+
+		while (located == false)
 		{
-			currentRotation = 0;
+			for (int j=0; j<numCols-1; j++)
+			{
+				if(blockArray.get(i).get(j).getColor() != null && blockArray.get(i).get(j+1).getColor() != null)
+				{
+					if(i!=0 && (blockArray.get(i+1).get(j).getColor() != null))
+					{
+						blockArray.get(i+1).get(j-1).setColor(null);
+						blockArray.get(i+1).get(j).setColor(null);
+						blockArray.get(i-1).get(j).setColor(shapeColor);
+						blockArray.get(i+1).get(j+1).setColor(shapeColor);
+						located = true;
+					}
+					else if (i!= 0 && j != 0)
+					{
+						blockArray.get(i-1).get(j).setColor(null);
+						blockArray.get(i+1).get(j+1).setColor(null);
+						blockArray.get(i+1).get(j-1).setColor(shapeColor);
+						blockArray.get(i+1).get(j).setColor(shapeColor);
+						located = true;
+					}
+					else
+					{
+						located = true;
+					}
+				}
+			}
+			i++;
 		}
-		
-		this.blockArray.get(rotatedShapes[currentRotation][0][0]).get(rotatedShapes[currentRotation][0][1]).setColor(shapeColor);
-		this.blockArray.get(rotatedShapes[currentRotation][1][0]).get(rotatedShapes[currentRotation][1][1]).setColor(shapeColor);
-		this.blockArray.get(rotatedShapes[currentRotation][2][0]).get(rotatedShapes[currentRotation][2][1]).setColor(shapeColor);
-		this.blockArray.get(rotatedShapes[currentRotation][3][0]).get(rotatedShapes[currentRotation][3][1]).setColor(shapeColor);	
-	*/
 	}
+
 	
 }
 
