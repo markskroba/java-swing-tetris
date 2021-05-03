@@ -17,13 +17,10 @@ public class MainScreenGUI
 {
 	private MainScreenFrame mainScreenFrame;
 	private DifficultyPanel difficultyPanel;
-	private ScoreBoardPanel scoreBoardPanel;
 	private JLabel gameTitleLabel;
 	private JButton playButton;
 	private JButton difficultyButton;
 	private JLabel levelLabel;
-	private JLabel highScoreLabelTitle;
-	private JLabel highScoreLabel;
 	private JButton seeHighScoresButton;
 
 	private ArrayList<String> difficultiesList = new ArrayList<String>();
@@ -104,27 +101,12 @@ public class MainScreenGUI
             }
         });
 		
-		highScoreLabelTitle = new JLabel();
-		highScoreLabelTitle.setText("High Score");
-		highScoreLabelTitle.setForeground(new Color(255,255,255));
-		highScoreLabelTitle.setFont(new Font("MV Boli",Font.PLAIN,20));
-		highScoreLabelTitle.setBounds(25,-10,400,70);
-		
-		//highScoreLabel.setText("205");
-		highScoreLabel = new JLabel();
-		highScoreLabel.setForeground(new Color(0,0,0));
-		highScoreLabel.setFont(new Font("Serif",Font.PLAIN,16));
-		highScoreLabel.setBackground(Color.white);
-		highScoreLabel.setOpaque(true);
-		highScoreLabel.setBounds(25,50,100,45);
-		highScoreLabel.setHorizontalAlignment(JLabel.CENTER);
-		
 		Border border3 = BorderFactory.createLineBorder(Color.black,1);
 		seeHighScoresButton = new JButton();
 		seeHighScoresButton.setText("See All Highscores");
 		seeHighScoresButton.setForeground(new Color(255,255,255));
 		seeHighScoresButton.setFont(new Font("sansSerif",Font.PLAIN,20));
-		seeHighScoresButton.setBounds(285,550,200,50);
+		seeHighScoresButton.setBounds(285,400,200,50);
 		seeHighScoresButton.setBackground(new Color(65,169,76));
 		seeHighScoresButton.setOpaque(true);
 		seeHighScoresButton.setBorder(border3);
@@ -153,15 +135,10 @@ public class MainScreenGUI
 		difficultyPanel.add(difficultyButton);
 		difficultyPanel.add(levelLabel);
 		
-		scoreBoardPanel = new ScoreBoardPanel();
-		scoreBoardPanel.add(highScoreLabelTitle);
-		scoreBoardPanel.add(highScoreLabel);
-
 		mainScreenFrame = new MainScreenFrame();
 		mainScreenFrame.add(gameTitleLabel);
 		mainScreenFrame.add(playButton);
 		mainScreenFrame.add(difficultyPanel);
-		mainScreenFrame.add(scoreBoardPanel);
 		mainScreenFrame.add(seeHighScoresButton);
 		mainScreenFrame.setLayout(null);
 	}
