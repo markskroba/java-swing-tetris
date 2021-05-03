@@ -176,6 +176,7 @@ public class BlockController implements KeyListener
 	 */
 	public void endTimer()
 	{
+		System.out.println("Timer Stoped");
 		timer.stop();
 	}
 

@@ -34,6 +34,11 @@ public class HighScoreController
 		return convertedScores;
 	}
 
+	public void addHighScore(HighScores currentHighScores, int score)
+	{
+		highScores = currentHighScores.addHighScore(score);
+	}
+
 	public void saveHighScores(String difficulty)
 		{}
 		
