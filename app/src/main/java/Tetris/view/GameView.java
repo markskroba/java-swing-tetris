@@ -77,7 +77,7 @@ public class GameView extends JPanel
 		Color firstColor = controller.getRandomColor();
 		
 		//add the first shape
-		controller.addTetrisShape("SShape", firstColor);
+		controller.addTetrisShape(firstShape, firstColor);
 		controller.updateState();
 		
 		//action listener for the restart button on the side panel
@@ -85,11 +85,8 @@ public class GameView extends JPanel
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				controller.restartGame();
-				scoreController.resetScore();
-				controller.setDifficulty(difficulty, listener);
-				frame.addKeyListener(controller);
-				frame.setFocusable(true);
+				frame.dispose();
+				GameView gameView = new GameView(difficulty);
 			}
 		};
 
