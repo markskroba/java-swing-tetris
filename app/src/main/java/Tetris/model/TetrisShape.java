@@ -21,22 +21,9 @@ public abstract class TetrisShape extends TetrisArray
 	{
 		this.shapeColor = color;
 		
-		block1Position = new int[2];
-		block2Position = new int[2];
-		block3Position = new int[2];
-		block4Position = new int[2];
-		
-		rotatedShapes = new int[4][4][2];
 	}
 
-	public abstract void createFirstRotation();
-	
-	public abstract void createSecondRotation();
-	
-	public abstract void createThirdRotation();
-	
-	public abstract void createFourthRotation();
-	
+		
 	public void moveVertically()
 	{	
 		//Make sure that it can't move out of bounds by checking that the last row is empty

@@ -59,7 +59,7 @@ public class GameView extends JPanel
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				controller.timerCallback();
+
 
 				if(controller.continueMoving() == false)
 				{
@@ -75,6 +75,8 @@ public class GameView extends JPanel
 				{
 					controller.endTimer();
 				}
+
+				controller.timerCallback();
 
 			}
 		};

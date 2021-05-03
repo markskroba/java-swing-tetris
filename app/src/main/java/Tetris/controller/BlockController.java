@@ -81,25 +81,28 @@ public class BlockController implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		if(continueMoving = true)
 		{
-			currentTetrisShape.moveHorizontally(1);
-			updateState();
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_LEFT)
-		{
-			currentTetrisShape.moveHorizontally(-1);
-			updateState();
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_UP)
-		{
-			currentTetrisShape.rotateShape();
-			updateState();
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_DOWN)
-		{
-			currentTetrisShape.moveVertically();
-			updateState();
+			if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+			{
+				currentTetrisShape.moveHorizontally(1);
+				updateState();
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_LEFT)
+			{
+				currentTetrisShape.moveHorizontally(-1);
+				updateState();
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_UP)
+			{
+				currentTetrisShape.rotateShape();
+				updateState();
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_DOWN)
+			{
+				currentTetrisShape.moveVertically();
+				updateState();
+			}
 		}
 	}
 	
@@ -109,6 +112,8 @@ public class BlockController implements KeyListener
 	 */
 	public void timerCallback()
 	{
+		continueMoving = tetrisField.continueMoving(); 
+
 		if (continueMoving = true)
 		{
 		
@@ -122,6 +127,7 @@ public class BlockController implements KeyListener
 			System.out.println("Clearing rows");
 			clearRow();
 			scoreController.calculateScore(fullRows.size());
+			System.out.println(scoreController.getScore());
 			updateState();
 		}	
 	}
@@ -140,7 +146,7 @@ public class BlockController implements KeyListener
 	 */
 	public void updateState()
 	{
-
+			
 		currentState = tetrisField.add(currentTetrisShape);
 		
 		continueMoving = tetrisField.continueMoving();

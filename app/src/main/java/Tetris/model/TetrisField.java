@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.awt.Color;
 
+
 public class TetrisField extends TetrisArray
 {
 	protected boolean continueMoving;
@@ -40,7 +41,7 @@ public class TetrisField extends TetrisArray
 		{
 			for(int j=0; j<numCols; j++)
 			{
-				if(this.getBlock(i,j).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				if(i<14 && this.getBlock(i+2,j).getColor() != null && shape.getBlock(i+2,j).getColor() != null)
 				{
 					continueMoving = false;
 					cementShape(prevShapePos);
@@ -146,20 +147,16 @@ public class TetrisField extends TetrisArray
 		
 		//iterate through the array starting from the the row above the lowest cleared row to move each block down
 		int numRowsCleared = fullRows.size();
-		int start;
+		int start = 15;
 		if (numRowsCleared > 0)
 		{
 			start = fullRows.get(numRowsCleared-1);
-		}
-		else
-		{
-			start = 0;
 		}
 		Color currentColor;
 		
 		while(numRowsCleared != 0)
 		{
-			for(int i=start; i==0; i--)
+			for(int i=start; i>=0; i--)
 			{
 				for(int j=0; j < numCols; j++)
 				{
