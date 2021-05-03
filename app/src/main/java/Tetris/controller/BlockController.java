@@ -109,11 +109,17 @@ public class BlockController implements KeyListener
 	 */
 	public void timerCallback()
 	{
-		currentTetrisShape.moveVertically();
+		if (continueMoving = true)
+		{
+		
+			currentTetrisShape.moveVertically();
+		}
+
 		updateState();
 		ArrayList<Integer> fullRows = getFullRows();
 		if(fullRows.size() >= 1)
 		{
+			System.out.println("Clearing rows");
 			clearRow();
 			scoreController.calculateScore(fullRows.size());
 			updateState();
