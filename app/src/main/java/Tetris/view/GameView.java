@@ -34,15 +34,6 @@ public class GameView extends JPanel
 		ScoreController scoreController = new ScoreController();
 
 
-		//action listener for the restart button on the side panel
-		ActionListener restart = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				controller.restartGame();
-				scoreController.resetScore();
-			}
-		};
 		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
 		this.add(gamePanel.getGameArea());
 		
@@ -50,11 +41,7 @@ public class GameView extends JPanel
 		controller = new BlockController(gamePanel);
 
 
-		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart);
-		this.add(sidePanel);
-		this.setBackground(Color.LIGHT_GRAY);
-
-		//action listener for the timer (passed to controller when setting difficulty)	
+			//action listener for the timer (passed to controller when setting difficulty)	
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -81,7 +68,6 @@ public class GameView extends JPanel
 			}
 		};
 
-
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
@@ -94,6 +80,24 @@ public class GameView extends JPanel
 		controller.addTetrisShape("SShape", firstColor);
 		controller.updateState();
 		
+		//action listener for the restart button on the side panel
+		ActionListener restart = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				controller.restartGame();
+				scoreController.resetScore();
+				controller.setDifficulty(difficulty, listener);
+				frame.addKeyListener(controller);
+				frame.setFocusable(true);
+			}
+		};
+
+		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart);
+		this.add(sidePanel);
+		this.setBackground(Color.LIGHT_GRAY);
+
+
 		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
