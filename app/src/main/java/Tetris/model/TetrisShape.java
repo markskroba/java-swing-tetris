@@ -23,7 +23,6 @@ public abstract class TetrisShape extends TetrisArray
 		
 	}
 
-		
 	public void moveVertically()
 	{	
 		//Make sure that it can't move out of bounds by checking that the last row is empty

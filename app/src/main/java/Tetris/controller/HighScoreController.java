@@ -36,7 +36,7 @@ public class HighScoreController
 
 	public void addHighScore(HighScores currentHighScores, int score)
 	{
-		highScores = currentHighScores.addHighScore(score);
+		//highScores = currentHighScores.addHighScore(score);
 	}
 
 	public void saveHighScores(String difficulty)
