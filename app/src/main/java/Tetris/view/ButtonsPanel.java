@@ -14,7 +14,7 @@ import model.*;
 
 public class ButtonsPanel extends JPanel
 {
-    public ButtonsPanel(int x, ActionListener restart)
+    public ButtonsPanel(int x, ActionListener restart, ActionListener quit)
     {
         this.setPreferredSize(new Dimension(x, 40));
         Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -30,15 +30,8 @@ public class ButtonsPanel extends JPanel
         this.add(restartButton);
         
         JButton quitButton = new JButton("Quit");
-        quitButton.addActionListener(
-            new ActionListener() {
-                public void actionPerformed(ActionEvent e)
-                {
-                    MainScreenGUI mainScreenGUI = new MainScreenGUI();
-                }
-            }
-        );
         quitButton.setPreferredSize(new Dimension(x / 2 - 10, 40 - 10));
+        quitButton.addActionListener(quit);
         this.add(quitButton);
     }    
 }

@@ -22,6 +22,7 @@ public class TShape extends TetrisShape
 
 	public void rotateShape()
 	{
+		/*
 		int i = 0;
 		boolean located = false;
 
@@ -55,6 +56,7 @@ public class TShape extends TetrisShape
 			}
 			i++;
 		}
+		*/
 	}
 }
 

@@ -32,5 +32,6 @@ public class Driver
 			hard.addHighScore(scoreController.getScore());
 			System.out.println("Adding a new highscore for hard difficulty");
 		}
-   */ }
+   */ 
+   }
 }

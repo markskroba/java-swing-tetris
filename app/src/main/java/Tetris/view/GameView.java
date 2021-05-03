@@ -89,8 +89,18 @@ public class GameView extends JPanel
 				GameView gameView = new GameView(difficulty);
 			}
 		};
+		
+		//action listener for the restart button on the side panel
+		ActionListener quit = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				frame.dispose();
+                MainScreenGUI mainScreenGUI = new MainScreenGUI();
+			}
+		};
 
-		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart);
+		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
 

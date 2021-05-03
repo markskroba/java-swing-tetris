@@ -11,7 +11,7 @@ import java.awt.FlowLayout;
 public class SidePanel extends JPanel {
 	protected NextFigurePanel nextFigurePanel;
 
-	public SidePanel(int x, int y, ActionListener restart)
+	public SidePanel(int x, int y, ActionListener restart, ActionListener quit)
 	{
 		this.setPreferredSize(new Dimension(x, y));
 		FlowLayout layout = new FlowLayout();
@@ -23,7 +23,7 @@ public class SidePanel extends JPanel {
 
 		nextFigurePanel = new NextFigurePanel(x);
 		this.add(nextFigurePanel);
-		ButtonsPanel buttonsPanel = new ButtonsPanel(x, restart);
+		ButtonsPanel buttonsPanel = new ButtonsPanel(x, restart, quit);
 		this.add(buttonsPanel);
 		GameScoreBoardPanel scoreBoardPanel = new GameScoreBoardPanel(x);
 		this.add(scoreBoardPanel);
