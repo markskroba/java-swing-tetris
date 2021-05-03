@@ -41,25 +41,29 @@ public class TetrisField extends TetrisArray
 		{
 			for(int j=0; j<numCols; j++)
 			{
-				if(i<14 && this.getBlock(i+2,j).getColor() != null && shape.getBlock(i+2,j).getColor() != null)
+			
+			
+				if(this.getBlock(i,j).getColor() != null)
+				{
+					currentState.adjust(i, j, new Block(this.getBlock(i,j).getColor()));
+					}
+				else if(shape.getBlock(i,j).getColor() != null)
+				{
+					currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+				}
+			}
+		}
+		
+		for (int i=0; i<numRows; i++)
+		{
+			for (int j=0; j<numCols; j++)
+			{
+
+				if(i<15 && this.getBlock(i+1,j).getColor() != null && shape.getBlock(i,j).getColor() != null)
 				{
 					continueMoving = false;
-					cementShape(prevShapePos);
-					return prevState;
+					cementShape(shape);
 
-				}
-				else
-				{
-					if(this.getBlock(i,j).getColor() != null)
-					{
-						currentState.adjust(i, j, new Block(this.getBlock(i,j).getColor()));
-
-					}
-					else if(shape.getBlock(i,j).getColor() != null)
-					{
-						currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
-
-					}
 				}
 			}
 		}
