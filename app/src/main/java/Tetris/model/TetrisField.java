@@ -90,6 +90,36 @@ public class TetrisField extends TetrisArray
 		return continueMoving;
 	}
 
+	public boolean canMoveLeft(TetrisShape shape)
+	{
+		for(int i=0; i<numRows; i++)
+		{
+			for(int j=0; j<numCols; j++)
+			{
+				if(j>0 && this.getBlock(i,j-1).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public boolean canMoveRight(TetrisShape shape)
+	{
+		for(int i=0; i<numRows; i++)
+		{
+			for(int j=0; j<numCols; j++)
+			{
+				if(j<numCols-1 && this.getBlock(i,j+1).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	//permanently adds the current shape to the field when it touches an occupied block
 	private void cementShape(TetrisShape shape)
 	{

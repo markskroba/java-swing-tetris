@@ -50,7 +50,7 @@ public class BlockController implements KeyListener
 
 	public Color getRandomColor()
 	{
-		Color colors[] = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
+		Color colors[] = new Color[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.MAGENTA};
 		Random random = new Random();
 		int randomColor = random.nextInt(colors.length);
 		return colors[randomColor];
@@ -81,17 +81,23 @@ public class BlockController implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		if(continueMoving = true)
+		if(continueMoving)
 		{
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 			{
-				currentTetrisShape.moveHorizontally(1);
-				updateState();
+				if (tetrisField.canMoveRight(currentTetrisShape))
+				{
+					currentTetrisShape.moveHorizontally(1);
+					updateState();
+				}
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			{
-				currentTetrisShape.moveHorizontally(-1);
-				updateState();
+				if (tetrisField.canMoveLeft(currentTetrisShape))
+				{
+					currentTetrisShape.moveHorizontally(-1);
+					updateState();
+				}
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_UP)
 			{
@@ -114,7 +120,7 @@ public class BlockController implements KeyListener
 	{
 		continueMoving = tetrisField.continueMoving(); 
 
-		if (continueMoving = true)
+		if (continueMoving)
 		{
 		
 			currentTetrisShape.moveVertically();
@@ -178,6 +184,11 @@ public class BlockController implements KeyListener
 	{
 		System.out.println("Timer Stoped");
 		timer.stop();
+	}
+
+	public void resetTimer()
+	{
+		timer.restart();
 	}
 
 
