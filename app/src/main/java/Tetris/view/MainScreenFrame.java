@@ -11,7 +11,7 @@ public class MainScreenFrame extends JFrame
 		this.setTitle("Tetris"); 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setSize(800,900); 
+		this.setSize(800,780); 
 		this.getContentPane().setBackground(new Color(211,211,211));
 		this.setVisible(true); 
 	}

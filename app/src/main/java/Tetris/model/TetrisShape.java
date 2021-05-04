@@ -4,23 +4,13 @@ import java.awt.Color;
 
 public abstract class TetrisShape extends TetrisArray
 {
-	protected int[] block1Position;
-	protected int[] block2Position;
-	protected int[] block3Position;
-	protected int[] block4Position;
-	
-	protected int[][][] rotatedShapes;
-	
-	protected int currentRotation;
-	
-	protected int center;
+	int center;
 	
 	protected Color shapeColor;
 
 	public TetrisShape(Color color)
 	{
 		this.shapeColor = color;
-		
 	}
 
 	public void moveVertically()
@@ -49,7 +39,6 @@ public abstract class TetrisShape extends TetrisArray
 		 		}	
 		 	}
 		}
-
 	}
 
 	public void moveHorizontally(int direction)
@@ -81,7 +70,6 @@ public abstract class TetrisShape extends TetrisArray
 					}
 				}
 			}
-
 		}
 		//to move right
 		else if(direction > 0)
@@ -108,10 +96,7 @@ public abstract class TetrisShape extends TetrisArray
 					}
 				}
 			}
-
 		}
-
 	}
-
 	public abstract void rotateShape();
 }

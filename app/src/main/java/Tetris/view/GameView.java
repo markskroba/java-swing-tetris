@@ -25,7 +25,7 @@ public class GameView extends JPanel
 	public GameView(String difficulty) 
 	{
 		resolutionX = 800;
-		resolutionY = 900;
+		resolutionY = 780;
 
 		frame = new JFrame("Tetris");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class GameView extends JPanel
 		ScoreController scoreController = new ScoreController();
 
 
-		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 800);
+		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 770);
 		this.add(gamePanel.getGameArea());
 		
 
@@ -103,7 +103,6 @@ public class GameView extends JPanel
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
-
 
 		frame.add(this);
 		frame.pack();

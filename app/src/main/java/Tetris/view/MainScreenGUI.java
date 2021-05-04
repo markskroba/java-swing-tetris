@@ -66,7 +66,6 @@ public class MainScreenGUI
 		difficultyButton.setHorizontalAlignment(JLabel.CENTER);
 		
 		Border border2 = BorderFactory.createLineBorder(Color.black,2);
-		//levelLabel.setText("Intermediate");
 		levelLabel = new JLabel();
 		levelLabel.setForeground(Color.black);
 		levelLabel.setFont((new Font("sansSerif",Font.PLAIN,20)));

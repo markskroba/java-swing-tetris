@@ -17,7 +17,7 @@ public class HighScoresGUI
 	{
 		//top level container
 		mainFrame = new JFrame("High Scores Display");
-		mainFrame.setPreferredSize(new Dimension(800, 900));
+		mainFrame.setPreferredSize(new Dimension(800, 780));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// set up container for the high scores page

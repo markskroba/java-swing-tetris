@@ -32,10 +32,10 @@ public class GamePanel implements TetrisUserInterface {
     }
 
 
-    public void updateView(TetrisArray gameScreen) {
+    public void updateView(TetrisArray gameScreen) 
+    {
         this.cleanUp();
 
-        // We might need to reverse those two loops.
         for (int row = 0; row < 16; row++)
         {
             JPanel rowPanel = new JPanel();
@@ -48,7 +48,6 @@ public class GamePanel implements TetrisUserInterface {
                 Color modelColor = modelBlock.getColor();
                 if (modelColor != null)
                 {
-//                  System.out.println("Block on " + row + " " + column);
                     ViewBlock viewBlock = new ViewBlock(modelColor);
                     rowPanel.add(viewBlock);
                 }
