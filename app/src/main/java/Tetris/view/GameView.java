@@ -10,11 +10,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class GameView extends JPanel
 {
 	private int resolutionX;
 	private int resolutionY;
+	private ArrayList<String> currentBlocks;
+	private ArrayList<Color> currentColors;
 	
 
 	public BlockController controller;
@@ -66,22 +69,28 @@ public class GameView extends JPanel
 		this.setBackground(Color.LIGHT_GRAY);
 		//End new code(temp)
 
-
+		currentBlocks = new ArrayList<String>();
+		currentColors = new ArrayList<Color>();
 		//action listener for the timer (passed to controller when setting difficulty)	
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-
-
 				if(controller.continueMoving() == false)
 				{
 					//Set up the next shape and its color
 					String nextShape = controller.getRandomShape();
 					Color nextColor = controller.getRandomColor();
-					sidePanel.drawNextFigure(nextShape, nextColor);
-
-					controller.addTetrisShape(nextShape, nextColor);
+					currentBlocks.add(nextShape);
+					currentColors.add(nextColor);
+					String nextShape2 = controller.getRandomShape();
+					Color nextColor2 = controller.getRandomColor();
+					currentBlocks.add(nextShape2);
+					currentColors.add(nextColor2);
+					sidePanel.drawNextFigure(currentBlocks.get(1), currentColors.get(1));
+					controller.addTetrisShape(currentBlocks.get(0), currentColors.get(0));
+					currentBlocks.remove(0);
+					currentColors.remove(0);
 				}
 
 				if(controller.endGame() == true)
