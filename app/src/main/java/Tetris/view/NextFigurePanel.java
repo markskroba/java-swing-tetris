@@ -83,7 +83,7 @@ public class NextFigurePanel extends JPanel
 			nextShape.get(2).get(1).setColor(color);
 			nextShape.get(3).get(1).setColor(color);
 		}
-
+		this.cleanUp();
 		for (int i=0; i<4; i++)
 		{
 			for (int j=0; j<4; j++)
@@ -92,12 +92,22 @@ public class NextFigurePanel extends JPanel
 				{		
 					ViewBlock block = new ViewBlock(color);				
 					this.add(block);
-					this.revalidate();
-					this.repaint();
 				}
+				else
+                {
+                    ViewBlock viewBlock = new ViewBlock();
+                    this.add(viewBlock);
+                }
 			}
 		}
-
+		this.revalidate();
+		this.repaint();
 	}
+	
+	private void cleanUp()
+    {
+        int numRows = this.getComponentCount();
+        this.removeAll();
+    }
 }
 
