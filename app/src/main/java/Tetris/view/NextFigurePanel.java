@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class NextFigurePanel extends JPanel
 {
-
 	protected int length;
+	protected ArrayList<ArrayList<Block>> nextShape;
 
 	public NextFigurePanel(int length) 
 	{
@@ -25,20 +25,19 @@ public class NextFigurePanel extends JPanel
 		layout.setHgap(0);
 		layout.setVgap(0);
 		this.setLayout(layout);
-
-
 	}
 
 	public void drawNextFigure(String shape, Color color)
 	{
-		ArrayList<ArrayList<Block>> nextShape = new ArrayList<ArrayList<Block>> ();
+		this.nextShape = new ArrayList<ArrayList<Block>>();
 		
 		//populate null arraylist
 		for(int i=0; i<4; i++)
 		{
+			nextShape.add(new ArrayList<Block>());
 			for (int j=0; j<4; j++)
 			{
-				nextShape.get(i).add(j, new Block());
+				nextShape.get(i).add(j,new Block());
 			}
 		}
 
@@ -84,7 +83,6 @@ public class NextFigurePanel extends JPanel
 			nextShape.get(2).get(1).setColor(color);
 			nextShape.get(3).get(1).setColor(color);
 		}
-		
 
 		for (int i=0; i<4; i++)
 		{

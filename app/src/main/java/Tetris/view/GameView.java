@@ -39,9 +39,35 @@ public class GameView extends JPanel
 		
 
 		controller = new BlockController(gamePanel);
+		
+		//New code(temp)
+		//Action listener for the restart button on the side panel
+		ActionListener restart = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				frame.dispose();
+				GameView gameView = new GameView(difficulty);
+			}
+		};
+		
+		//Action listener for the quit button on the side panel
+		ActionListener quit = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				frame.dispose();
+                MainScreenGUI mainScreenGUI = new MainScreenGUI();
+			}
+		};
+
+		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
+		this.add(sidePanel);
+		this.setBackground(Color.LIGHT_GRAY);
+		//End new code(temp)
 
 
-			//action listener for the timer (passed to controller when setting difficulty)	
+		//action listener for the timer (passed to controller when setting difficulty)	
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -53,7 +79,7 @@ public class GameView extends JPanel
 					//Set up the next shape and its color
 					String nextShape = controller.getRandomShape();
 					Color nextColor = controller.getRandomColor();
-					//sidePanel.drawNextFigure(nextShape, nextColor);
+					sidePanel.drawNextFigure(nextShape, nextColor);
 
 					controller.addTetrisShape(nextShape, nextColor);
 				}
@@ -64,9 +90,9 @@ public class GameView extends JPanel
 				}
 
 				controller.timerCallback();
-
 			}
 		};
+		
 
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
@@ -80,7 +106,8 @@ public class GameView extends JPanel
 		controller.addTetrisShape(firstShape, firstColor);
 		controller.updateState();
 		
-		//action listener for the restart button on the side panel
+		/*
+		//Action listener for the restart button on the side panel
 		ActionListener restart = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -90,7 +117,7 @@ public class GameView extends JPanel
 			}
 		};
 		
-		//action listener for the restart button on the side panel
+		//Action listener for the quit button on the side panel
 		ActionListener quit = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -103,7 +130,8 @@ public class GameView extends JPanel
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
-
+		*/
+		
 		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
