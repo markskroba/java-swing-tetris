@@ -25,7 +25,7 @@ public class Straight extends TetrisShape
 		int i = 0;
 		boolean located = false;
 
-		while (located == false)
+		while (!located && i<numRows)
 		{
 			for (int j = 0; j < numCols - 1; j++) {
 				// |
@@ -42,7 +42,7 @@ public class Straight extends TetrisShape
 						blockArray.get(i + 1).get(j + 2).setColor(shapeColor);
 					}
 
-				    else if (j >= 1 && j == 7)
+				    else if (j >= 2 && j == 7)
 					{
 						blockArray.get(i).get(j).setColor(null);
 						blockArray.get(i + 2).get(j).setColor(null);
