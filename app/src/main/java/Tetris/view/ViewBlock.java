@@ -15,8 +15,6 @@ public class ViewBlock extends JPanel
     {
         this.setPreferredSize(new Dimension(48, 48));
         this.setBackground(Color.WHITE);
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
-        this.setBorder(border);
     }
 
     public ViewBlock(Color color)
