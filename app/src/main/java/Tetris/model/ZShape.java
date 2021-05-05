@@ -25,20 +25,25 @@ public class ZShape extends TetrisShape
 
 		while (!located && i<numRows)
 		{
-			for (int j=0; j<numCols-3; j++)
+			for (int j=0; j<numCols-2; j++)
 			{
 				if(blockArray.get(i).get(j).getColor() != null && blockArray.get(i).get(j+1).getColor() != null)
 				{
-					if(i!=0 && (blockArray.get(i-1).get(j).getColor() != null))
+					if(i!=0 && j != 0 && (blockArray.get(i-1).get(j+1).getColor() != null))
 					{
-						blockArray.get(i-1).get(j).setColor(null);
-						blockArray.get(i+1).get(j+2).setColor(shapeColor);
+						blockArray.get(i-1).get(j+1).setColor(null);
+						blockArray.get(i).get(j+1).setColor(null);
+						blockArray.get(i+1).get(j+1).setColor(shapeColor);
+						blockArray.get(i).get(j-1).setColor(shapeColor);
 						located = true;
 					}
-					else if (i!=0 && blockArray.get(i+1).get(j+2).getColor() != null)
+					else if (i!=0 && j < numCols - 3 && blockArray.get(i+1).get(j+2).getColor() != null)
 					{
+						blockArray.get(i+1).get(j+1).setColor(null);
 						blockArray.get(i+1).get(j+2).setColor(null);
-						blockArray.get(i-1).get(j).setColor(shapeColor);
+						blockArray.get(i-1).get(j+1).setColor(shapeColor);
+						blockArray.get(i+1).get(j).setColor(shapeColor);
+
 						located = true;
 					}
 					else
