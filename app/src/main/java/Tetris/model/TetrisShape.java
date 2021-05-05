@@ -98,5 +98,6 @@ public abstract class TetrisShape extends TetrisArray
 			}
 		}
 	}
+	
 	public abstract void rotateShape();
 }

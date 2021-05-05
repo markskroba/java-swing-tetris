@@ -8,7 +8,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-public class SidePanel extends JPanel {
+public class SidePanel extends JPanel 
+{
 	protected NextFigurePanel nextFigurePanel;
 
 	public SidePanel(int x, int y, ActionListener restart, ActionListener quit)

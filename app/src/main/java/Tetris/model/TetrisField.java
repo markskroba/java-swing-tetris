@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.awt.Color;
 
-
 public class TetrisField extends TetrisArray
 {
 	protected boolean continueMoving;
@@ -37,37 +36,37 @@ public class TetrisField extends TetrisArray
 		//Combining the TetrisField and TetrisShape.
 		//If there is overlap, returns null (controller will return the previous state in that case)
 		//and permanently adds the shape to the field.
-		for(int i=0; i<numRows; i++)
+		for(int i = 0; i < numRows; i++)
 		{
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
 			
 			
-				if(this.getBlock(i,j).getColor() != null)
+				if(this.getBlock(i, j).getColor() != null)
 				{
-					currentState.adjust(i, j, new Block(this.getBlock(i,j).getColor()));
-					}
-				else if(shape.getBlock(i,j).getColor() != null)
+					currentState.adjust(i, j, new Block(this.getBlock(i, j).getColor()));
+				}
+				else if(shape.getBlock(i, j).getColor() != null)
 				{
-					currentState.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+					currentState.adjust(i, j, new Block(shape.getBlock(i, j).getColor()));
 				}
 			}
 		}
 		
-		for (int i=0; i<numRows; i++)
+		for (int i = 0; i < numRows; i++)
 		{
-			for (int j=0; j<numCols; j++)
+			for (int j = 0; j < numCols; j++)
 			{
 
-				if(i<15 && this.getBlock(i+1,j).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				if(i < 15 && this.getBlock(i + 1, j).getColor() != null && shape.getBlock(i, j).getColor() != null)
 				{
 					continueMoving = false;
 					cementShape(shape);
-
 				}
 			}
 		}
-		for (int k=0; k<numCols; k++)
+		
+		for (int k = 0; k < numCols; k++)
 		{
 			if(shape.getBlock(15, k).getColor() != null)
 			{
@@ -92,11 +91,11 @@ public class TetrisField extends TetrisArray
 
 	public boolean canMoveLeft(TetrisShape shape)
 	{
-		for(int i=0; i<numRows; i++)
+		for(int i = 0; i < numRows; i++)
 		{
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
-				if(j>0 && this.getBlock(i,j-1).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				if(j > 0 && this.getBlock(i, j - 1).getColor() != null && shape.getBlock(i, j).getColor() != null)
 				{
 					return false;
 				}
@@ -107,11 +106,11 @@ public class TetrisField extends TetrisArray
 	
 	public boolean canMoveRight(TetrisShape shape)
 	{
-		for(int i=0; i<numRows; i++)
+		for(int i = 0; i < numRows; i++)
 		{
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
-				if(j<numCols-1 && this.getBlock(i,j+1).getColor() != null && shape.getBlock(i,j).getColor() != null)
+				if(j < numCols - 1 && this.getBlock(i, j + 1).getColor() != null && shape.getBlock(i, j).getColor() != null)
 				{
 					return false;
 				}
@@ -123,17 +122,16 @@ public class TetrisField extends TetrisArray
 	//permanently adds the current shape to the field when it touches an occupied block
 	private void cementShape(TetrisShape shape)
 	{
-		for(int i=0; i<numRows; i++)
+		for(int i = 0; i < numRows; i++)
 		{
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
-				if(shape.getBlock(i,j).getColor() != null)
+				if(shape.getBlock(i, j).getColor() != null)
 				{
-					this.adjust(i, j, new Block(shape.getBlock(i,j).getColor()));
+					this.adjust(i, j, new Block(shape.getBlock(i, j).getColor()));
 				}
 			}
 		}
-		
 	}
 
 	/*
@@ -145,18 +143,18 @@ public class TetrisField extends TetrisArray
 		ArrayList<Integer> rowsFilled = new ArrayList<Integer>();
 		boolean addRow = true;
 
-		for(int i=0; i<numRows; i++)
+		for(int i = 0; i < numRows; i++)
 		{
 			addRow = true;
 
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
 				if(this.blockArray.get(i).get(j).getColor() == null)
 				{
 					addRow = false;
 				}
 			}
-
+			
 			if(addRow == true)
 			{
 				rowsFilled.add(i);
@@ -173,7 +171,7 @@ public class TetrisField extends TetrisArray
 		ArrayList<Integer> fullRows = locateFullRow();
 		for(int row: fullRows)
 		{
-			for(int i=0; i < numCols; i++)
+			for(int i = 0; i < numCols; i++)
 			{
 				this.blockArray.get(row).get(i).setColor(null);
 			}
@@ -182,25 +180,26 @@ public class TetrisField extends TetrisArray
 		//iterate through the array starting from the the row above the lowest cleared row to move each block down
 		int numRowsCleared = fullRows.size();
 		int start = 15;
+		
 		if (numRowsCleared > 0)
 		{
 			start = fullRows.get(numRowsCleared-1);
 		}
+		
 		Color currentColor;
 		
 		while(numRowsCleared != 0)
 		{
-			for(int i=start; i>=0; i--)
+			for(int i = start; i >= 0; i--)
 			{
-				for(int j=0; j < numCols; j++)
+				for(int j = 0; j < numCols; j++)
 				{
-					if(this.blockArray.get(i).get(j).getColor() != null && this.blockArray.get(i+1).get(j).getColor() == null)
+					if(this.blockArray.get(i).get(j).getColor() != null && this.blockArray.get(i + 1).get(j).getColor() == null)
 					{
 						currentColor = this.blockArray.get(i).get(j).getColor();
 						this.blockArray.get(i).get(j).setColor(null);
-						this.blockArray.get(i+1).get(j).setColor(currentColor);
+						this.blockArray.get(i + 1).get(j).setColor(currentColor);
 					}
-
 				}
 			}
 			numRowsCleared--;
@@ -209,9 +208,9 @@ public class TetrisField extends TetrisArray
 
 	public void clearField()
 	{
-		for (int i=0; i<numRows; i++)
+		for (int i = 0; i < numRows; i++)
 		{
-			for(int j=0; j<numCols; j++)
+			for(int j = 0; j < numCols; j++)
 			{
 				this.blockArray.get(i).get(j).setColor(null);
 			}

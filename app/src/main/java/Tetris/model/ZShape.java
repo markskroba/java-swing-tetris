@@ -29,8 +29,6 @@ public class ZShape extends TetrisShape
 			{
 				if(blockArray.get(i).get(j).getColor() != null && blockArray.get(i).get(j+1).getColor() != null)
 				{
-					//|_
-					//  |
 					if(i!=0 && (blockArray.get(i-1).get(j).getColor() != null))
 					{
 						blockArray.get(i-1).get(j).setColor(null);

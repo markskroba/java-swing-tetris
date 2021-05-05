@@ -27,7 +27,6 @@ public class HighScoresDisplay extends JPanel
 		columnTitle.setAlignmentX((float)0.5);
 		columnTitle.setFont(new Font("Serif", Font.PLAIN, 36));
 
-
 		//initialize the highscores using the passed in array
 		currentScores = new JList(scores);
 

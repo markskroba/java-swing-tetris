@@ -25,7 +25,6 @@ public class Scores
 		    float factor = 10*f;
 		    this.currentScore = this.currentScore + (int)factor;
 		    f = f + 0.5f;
-		
 		 }
 	}
 

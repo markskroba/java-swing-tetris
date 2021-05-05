@@ -17,8 +17,7 @@ public class Straight extends TetrisShape
 		this.blockArray.get(1).get(center).setColor(this.shapeColor);
 		this.blockArray.get(2).get(center).setColor(this.shapeColor);
 		this.blockArray.get(3).get(center).setColor(this.shapeColor);
-		
-		}
+	}
 
 	public void rotateShape()
 	{
@@ -27,8 +26,8 @@ public class Straight extends TetrisShape
 
 		while (!located && i<numRows)
 		{
-			for (int j = 0; j < numCols - 1; j++) {
-				// |
+			for (int j = 0; j < numCols - 1; j++) 
+			{
 				if (blockArray.get(i).get(j).getColor() != null && blockArray.get(i + 1).get(j).getColor() != null && blockArray.get(i + 2).get(j).getColor() != null && blockArray.get(i + 3).get(j).getColor() != null)
 				{
 				    if (j >= 1 && j <= 6 )
@@ -55,7 +54,6 @@ public class Straight extends TetrisShape
 
 					located = true;
 				}
-				// --
 				else if (blockArray.get(i).get(j).getColor() != null && blockArray.get(i).get(j+1).getColor() != null && blockArray.get(i).get(j+2).getColor() != null && blockArray.get(i).get(j+3).getColor() != null)
 				{
 				    if (blockArray.get(i+1).get(j+1).getColor() == null && blockArray.get(i+2).get(j+1).getColor() == null)
@@ -71,7 +69,6 @@ public class Straight extends TetrisShape
 			}
 			i++;
 		}
-		
 	}
 }
 
