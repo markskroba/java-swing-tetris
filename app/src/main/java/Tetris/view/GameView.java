@@ -124,10 +124,19 @@ public class GameView extends JPanel
 		//randomly call the first shape
 		String firstShape = controller.getRandomShape();
 		Color firstColor = controller.getRandomColor();
+		currentBlocks.add(firstShape);
+		currentColors.add(firstColor);
+		String secondShape = controller.getRandomShape();
+		Color secondColor = controller.getRandomColor();
+		currentBlocks.add(secondShape);
+		currentColors.add(secondColor);
 		
 		//add the first shape
+		sidePanel.drawNextFigure(currentBlocks.get(1), currentColors.get(1));
 		controller.addTetrisShape(firstShape, firstColor);
 		controller.updateState();
+		currentBlocks.remove(0);
+		currentColors.remove(0);
 		
 		frame.add(this);
 		frame.pack();
