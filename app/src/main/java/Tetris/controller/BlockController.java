@@ -188,7 +188,7 @@ public class BlockController implements KeyListener
 		highScores.addHighScore(this.scoreController.getScore());
 
 		//Saving highscores with HighScoresController
-		System.out.println("Trying to save this highscore throught HighScoreController");
+		System.out.println("Trying to save this highscore through HighScoreController");
 		HighScoreController highScoreController = new HighScoreController();
 		System.out.println(this.difficulty);
 		highScoreController.saveHighScores(this.difficulty, highScores);

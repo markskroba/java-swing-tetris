@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.event.*;
 import java.util.Random;
 import java.util.ArrayList;
+import java.awt.Font;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 
 public class GameView extends JPanel
 {
@@ -57,11 +60,22 @@ public class GameView extends JPanel
                 MainScreenGUI mainScreenGUI = new MainScreenGUI();
 			}
 		};
-
+		
+		//Displays score
+		Border scoreBorder = BorderFactory.createLineBorder(Color.black, 2);
+		JLabel scoreLabel = new JLabel();
+		scoreLabel.setHorizontalAlignment(JLabel.CENTER);
+		scoreLabel.setText(String.valueOf(scoreController.getScore()));
+		scoreLabel.setBackground(Color.white);
+		scoreLabel.setOpaque(true);
+		scoreLabel.setFont((new Font("sansSerif", Font.PLAIN, 40)));
+		scoreLabel.setBorder(scoreBorder);
+		
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
-
+		sidePanel.add(scoreLabel);
+		
 		currentBlocks = new ArrayList<String>();
 		currentColors = new ArrayList<Color>();
 		
@@ -114,6 +128,7 @@ public class GameView extends JPanel
 					}
 				}
 				controller.timerCallback();
+				scoreLabel.setText(String.valueOf(scoreController.getScore()));
 			}
 		};
 		

@@ -26,8 +26,8 @@ public class SidePanel extends JPanel
 		this.add(nextFigurePanel);
 		ButtonsPanel buttonsPanel = new ButtonsPanel(x, restart, quit);
 		this.add(buttonsPanel);
-		GameScoreBoardPanel scoreBoardPanel = new GameScoreBoardPanel(x);
-		this.add(scoreBoardPanel);
+		//GameScoreBoardPanel scoreBoardPanel = new GameScoreBoardPanel(x);
+		//this.add(scoreBoardPanel);
 	}
 
 	public void drawNextFigure(String shape, Color color)
