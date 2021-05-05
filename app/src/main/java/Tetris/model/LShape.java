@@ -20,12 +20,12 @@ public class LShape extends TetrisShape
 
 	public void rotateShape()
 	{
-		int i = 0;
+		int i = 1;
 		boolean located = false;
 
-		while (located == false)
+		while (!located && i < numRows)
 		{
-			for (int j = 0; j < numCols - 1; j++)
+			for (int j = 0; j < numCols - 2; j++)
 			{
 			    {
 					if (blockArray.get(i).get(j).getColor() != null && blockArray.get(i).get(j + 1).getColor() != null && blockArray.get(i).get(j + 2).getColor() != null) 
@@ -55,7 +55,7 @@ public class LShape extends TetrisShape
 							located = true;
 						}
 					} 
-					else if (blockArray.get(i).get(j).getColor() != null && blockArray.get(i + 1).get(j).getColor() != null && blockArray.get(i + 2).get(j).getColor() != null) 
+					else if (j != 0 && blockArray.get(i).get(j).getColor() != null && blockArray.get(i + 1).get(j).getColor() != null && blockArray.get(i + 2).get(j).getColor() != null) 
 					{
 						if (i != 0 && blockArray.get(i).get(j - 1).getColor() != null) 
 						{
