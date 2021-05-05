@@ -2,8 +2,7 @@ package view;
 import model.*;
 import controller.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -18,7 +17,6 @@ public class GameView extends JPanel
 	private int resolutionY;
 	private ArrayList<String> currentBlocks;
 	private ArrayList<Color> currentColors;
-	
 
 	public BlockController controller;
 	private GamePanel gamePanel;
@@ -43,7 +41,6 @@ public class GameView extends JPanel
 
 		controller = new BlockController(gamePanel, highScores, difficulty);
 		
-		//New code(temp)
 		//Action listener for the restart button on the side panel
 		ActionListener restart = new ActionListener()
 		{
@@ -67,10 +64,10 @@ public class GameView extends JPanel
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
-		//End new code(temp)
 
 		currentBlocks = new ArrayList<String>();
 		currentColors = new ArrayList<Color>();
+		
 		//action listener for the timer (passed to controller when setting difficulty)	
 		ActionListener listener = new ActionListener()
 		{
@@ -96,13 +93,34 @@ public class GameView extends JPanel
 				if(controller.endGame() == true)
 				{
 					controller.endTimer();
+					int choice = JOptionPane.showConfirmDialog(frame, "You lose. Play again?", "Results", JOptionPane.YES_NO_OPTION);
+					if(choice == 0)
+					{
+						frame.dispose();
+						GameView gameView = new GameView(difficulty, highScores);
+					}
+					else
+					{
+						frame.dispose();
+						
+						HighScoreController highScoresController = new HighScoreController();
+						
+						HighScores easy = highScoresController.loadHighScores("easy");
+						HighScores medium = highScoresController.loadHighScores("medium");
+						HighScores hard = highScoresController.loadHighScores("hard");
+
+						HighScoresDisplay easyDisplay = new HighScoresDisplay("Easy", 200, highScoresController.getHighScores(easy));
+						HighScoresDisplay mediumDisplay = new HighScoresDisplay("Medium", 200, highScoresController.getHighScores(medium));
+						HighScoresDisplay hardDisplay = new HighScoresDisplay("Hard", 200, highScoresController.getHighScores(hard));
+						
+						HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
+					}
 				}
 
 				controller.timerCallback();
 			}
 		};
 		
-
 		// setting difficulty from value passed by MainScreenGUI
 		controller.setDifficulty(difficulty, listener);
 		controller.addScoreController(scoreController);
@@ -114,32 +132,6 @@ public class GameView extends JPanel
 		//add the first shape
 		controller.addTetrisShape(firstShape, firstColor);
 		controller.updateState();
-		
-		/*
-		//Action listener for the restart button on the side panel
-		ActionListener restart = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				frame.dispose();
-				GameView gameView = new GameView(difficulty);
-			}
-		};
-		
-		//Action listener for the quit button on the side panel
-		ActionListener quit = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				frame.dispose();
-                MainScreenGUI mainScreenGUI = new MainScreenGUI();
-			}
-		};
-
-		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
-		this.add(sidePanel);
-		this.setBackground(Color.LIGHT_GRAY);
-		*/
 		
 		frame.add(this);
 		frame.pack();

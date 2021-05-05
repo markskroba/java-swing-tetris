@@ -35,7 +35,6 @@ public class BlockController implements KeyListener
 
 		this.highScores = highScores;
 		this.difficulty = difficulty;
-
 	}
 
 	/*
