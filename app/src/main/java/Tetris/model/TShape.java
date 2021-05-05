@@ -16,8 +16,7 @@ public class TShape extends TetrisShape
 		this.blockArray.get(1).get(center-1).setColor(color);
 		this.blockArray.get(1).get(center).setColor(color);
 		this.blockArray.get(1).get(center+1).setColor(color);
-		
-		}
+	}
 
 	public void rotateShape()
 	{

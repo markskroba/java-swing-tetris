@@ -16,7 +16,6 @@ public class Square extends TetrisShape
 		this.blockArray.get(0).get(center+1).setColor(this.shapeColor);
 		this.blockArray.get(1).get(center).setColor(this.shapeColor);
 		this.blockArray.get(1).get(center+1).setColor(this.shapeColor);
-		
 	}
 
 	public void rotateShape()

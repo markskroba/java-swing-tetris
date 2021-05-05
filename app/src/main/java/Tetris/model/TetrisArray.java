@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 
 public class TetrisArray
@@ -10,6 +11,7 @@ public class TetrisArray
 	public TetrisArray()
 	{
 		this.blockArray = new ArrayList<ArrayList<Block>>();
+		
 		numRows = 16;
 		numCols=9;
 
@@ -42,14 +44,12 @@ public class TetrisArray
 		return numCols;
 	}
 	
-	/*
-	 *Can adjust the array list of the tetris array
-	 */
+	// Can adjust the array list of the tetris array
 	public void adjust(int row, int col, Block block)
 	{
 		this.blockArray.get(row).set(col, block);
 	}
-
+	
 	public Block getBlock(int row, int col)
 	{
 		return this.blockArray.get(row).get(col);

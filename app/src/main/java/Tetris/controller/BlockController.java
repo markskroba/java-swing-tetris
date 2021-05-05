@@ -37,9 +37,8 @@ public class BlockController implements KeyListener
 		this.difficulty = difficulty;
 	}
 
-	/*
-	 *Changes the current shape
-	 */
+	
+	//Changes the current shape
 	public void addTetrisShape(String shape, Color color)
 	{
 		currentTetrisShape = factory.getShape(shape, color);
@@ -143,9 +142,7 @@ public class BlockController implements KeyListener
 		}	
 	}
 
-	/*
-	 *Adds a controller to keep track of the scores so that view does not interact directly
-	 */
+	//Adds a controller to keep track of the scores so that view does not interact directly
 	public void addScoreController(ScoreController controller)
 	{
 		this.scoreController = controller;
@@ -174,17 +171,13 @@ public class BlockController implements KeyListener
 		return endGame;
 	}
 
-	/*
-	 *Returns false when a new block needs to be added
-	 */
+	//Returns false when a new block needs to be added
 	public boolean continueMoving()
 	{
 		return continueMoving;
 	}
 
-	/*
-	 *Called when the game is over
-	 */
+	//Called when the game is over
 	public void endTimer()
 	{
 		System.out.println("Timer Stoped");
@@ -206,10 +199,7 @@ public class BlockController implements KeyListener
 		timer.restart();
 	}
 
-
-	/*
-	 *Locate any full rows each time the ui is updated so the score can be calculated
-	 */
+	//Locate any full rows each time the ui is updated so the score can be calculated
 	public ArrayList<Integer> getFullRows()
 	{
 		ArrayList<Integer> fullRows = new ArrayList<Integer>();
@@ -218,10 +208,7 @@ public class BlockController implements KeyListener
 		return fullRows;
 	}
 
-
-	/*
-	 *Clear the full rows and move all the blocks down
-	 */
+	//Clear the full rows and move all the blocks down
 	public void clearRow()
 	{
 		tetrisField.clearRows();

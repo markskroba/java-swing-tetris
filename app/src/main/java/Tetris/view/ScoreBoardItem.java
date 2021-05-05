@@ -15,6 +15,7 @@ public class ScoreBoardItem extends JPanel{
 		{
 			this.setBackground(Color.YELLOW);
 		}
+		
 		this.setPreferredSize(new Dimension(x, 30));
 		JTextArea info = new JTextArea("Score: ");
 		info.append(String.valueOf(score));

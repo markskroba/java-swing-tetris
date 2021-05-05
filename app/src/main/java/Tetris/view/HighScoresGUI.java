@@ -25,12 +25,10 @@ public class HighScoresGUI
 		scoresColumns.setBackground(new Color(211,211,211));
 		scoresColumns.setLayout(new BorderLayout());
 
-
 		//add the columns to the page
 		scoresColumns.add(easy, BorderLayout.WEST);
 		scoresColumns.add(medium, BorderLayout.CENTER);
 		scoresColumns.add(hard, BorderLayout.EAST);
-
 
 		//make a container for the back to main page button
 		back = new JButton("Return to Main Page");

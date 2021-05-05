@@ -22,16 +22,20 @@ public class HighScoresWindowAdapter extends WindowAdapter
 	@Override
 	public void windowClosing(WindowEvent e)
 	{
-		for (int i = 0; i < this.fileNames.length; i++) {
+		for (int i = 0; i < this.fileNames.length; i++) 
+		{
 			System.out.println("Saving a highscores for " + this.fileNames[i]);
-			try {
+			try 
+			{
 				FileOutputStream fileOutputStream = new FileOutputStream(this.fileNames[i]);
 				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 				objectOutputStream.writeObject(this.scores[i]);
 				objectOutputStream.close();
 				fileOutputStream.close();
 				System.out.println("Highscores for " + this.fileNames[i] + " were saved");
-			} catch (IOException exception) {
+			} 
+			catch (IOException exception) 
+			{
 				System.out.println("Could not save highscores");
 				System.out.println(exception);
 			}

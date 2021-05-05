@@ -11,8 +11,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-public class GamePanel implements TetrisUserInterface {
-
+public class GamePanel implements TetrisUserInterface 
+{
     protected JPanel gameArea;
     protected int x;
     protected int y;
@@ -59,7 +59,6 @@ public class GamePanel implements TetrisUserInterface {
             }
             gameArea.add(rowPanel);
         }
-
         gameArea.revalidate();
         gameArea.repaint();
     }
@@ -75,6 +74,7 @@ public class GamePanel implements TetrisUserInterface {
         int numRows = this.gameArea.getComponentCount();
         this.gameArea.removeAll();
     }
+    
     public JPanel getGameArea()
     {
 		return gameArea;

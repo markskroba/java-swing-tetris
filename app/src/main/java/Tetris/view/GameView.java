@@ -22,7 +22,6 @@ public class GameView extends JPanel
 	private GamePanel gamePanel;
 	private JFrame frame;
 
-
 	public GameView(String difficulty, HighScores highScores)
 	{
 		resolutionX = 800;
@@ -34,11 +33,9 @@ public class GameView extends JPanel
 		
 		ScoreController scoreController = new ScoreController();
 
-
 		gamePanel = new GamePanel((int)(resolutionX * 0.7) - 20, 770);
 		this.add(gamePanel.getGameArea());
 		
-
 		controller = new BlockController(gamePanel, highScores, difficulty);
 		
 		//Action listener for the restart button on the side panel
@@ -116,7 +113,6 @@ public class GameView extends JPanel
 						HighScoresGUI highScores = new HighScoresGUI(easyDisplay, mediumDisplay, hardDisplay);
 					}
 				}
-
 				controller.timerCallback();
 			}
 		};
@@ -139,5 +135,4 @@ public class GameView extends JPanel
 		frame.addKeyListener(controller);
 		frame.setFocusable(true);
 	}
-
 }
