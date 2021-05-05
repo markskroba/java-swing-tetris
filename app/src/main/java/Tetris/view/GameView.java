@@ -18,6 +18,8 @@ public class GameView extends JPanel
 {
 	private int resolutionX;
 	private int resolutionY;
+	
+	//Hold the current blocks on screen
 	private ArrayList<String> currentBlocks;
 	private ArrayList<Color> currentColors;
 
@@ -71,11 +73,13 @@ public class GameView extends JPanel
 		scoreLabel.setFont((new Font("sansSerif", Font.PLAIN, 40)));
 		scoreLabel.setBorder(scoreBorder);
 		
+		//Create and add side panel to game screen
 		SidePanel sidePanel = new SidePanel((int)(resolutionY* 0.3) - 20, resolutionY, restart, quit);
 		this.add(sidePanel);
 		this.setBackground(Color.LIGHT_GRAY);
 		sidePanel.add(scoreLabel);
 		
+		//Instantiate the arrays that will contain the current block attributes
 		currentBlocks = new ArrayList<String>();
 		currentColors = new ArrayList<Color>();
 		
@@ -86,7 +90,7 @@ public class GameView extends JPanel
 			{
 				if(controller.continueMoving() == false)
 				{
-					//Set up the next shape and its color
+					//Set up both the current falling shape and the nextFigure shape
 					String nextShape = controller.getRandomShape();
 					Color nextColor = controller.getRandomColor();
 					currentBlocks.add(nextShape);
@@ -105,12 +109,12 @@ public class GameView extends JPanel
 				{
 					controller.endTimer();
 					int choice = JOptionPane.showConfirmDialog(frame, "You lose. Play again?", "Results", JOptionPane.YES_NO_OPTION);
-					if(choice == 0)
+					if(choice == 0) // Restarts game if user chose yes
 					{
 						frame.dispose();
 						GameView gameView = new GameView(difficulty, highScores);
 					}
-					else
+					else // Takes user to highScoreScreen if user chose no
 					{
 						frame.dispose();
 						
@@ -128,7 +132,7 @@ public class GameView extends JPanel
 					}
 				}
 				controller.timerCallback();
-				scoreLabel.setText(String.valueOf(scoreController.getScore()));
+				scoreLabel.setText(String.valueOf(scoreController.getScore())); // Change the score after a row is cleared
 			}
 		};
 		
