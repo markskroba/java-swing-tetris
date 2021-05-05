@@ -179,7 +179,7 @@ public class TetrisField extends TetrisArray
 		
 		//iterate through the array starting from the the row above the lowest cleared row to move each block down
 		int numRowsCleared = fullRows.size();
-		int start = 15;
+		int start = 14;
 		
 		if (numRowsCleared > 0)
 		{
