@@ -2,13 +2,9 @@ package controller;
 
 import model.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 
 public class HighScoreController
 {
@@ -51,15 +47,9 @@ public class HighScoreController
 			{
 				scores.addHighScore(loadedScore);
 			}
-
-			FileOutputStream fileOutputStream = new FileOutputStream(difficulty);
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-			objectOutputStream.writeObject(scores);
-
 			objectInputStream.close();
 			fileInputStream.close();
-			objectOutputStream.close();
-			fileOutputStream.close();
+
 		}
 		catch (ClassNotFoundException e)
 		{
@@ -70,6 +60,19 @@ public class HighScoreController
 		{
 			System.out.println(e.getMessage());
 		}
+
+		try {
+			FileOutputStream fileOutputStream = new FileOutputStream(difficulty);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			objectOutputStream.writeObject(scores);
+			objectOutputStream.close();
+			fileOutputStream.close();
+		}
+		catch (IOException writeE)
+		{
+			System.out.println(writeE);
+		}
+
 	}
 
 	public HighScores loadHighScores(String difficulty)
@@ -91,6 +94,16 @@ public class HighScoreController
 			//Usually could not find a file since no highscore was saved, creating a new one
 			System.out.println("Could not find highscores for " + difficulty + ", creating a new object");
 			HighScores loadedHighScores = new HighScores();
+
+//			try {
+//				FileOutputStream fileOutputStream = new FileOutputStream(difficulty);
+//				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//				System.out.println("Creating a file for that difficulty");
+//			}
+//			catch (IOException io_e)
+//			{
+//				System.out.println(io_e);
+//			}
 			return loadedHighScores;
 		}
 		catch (ClassNotFoundException e)
