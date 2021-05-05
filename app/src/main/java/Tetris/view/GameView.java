@@ -25,7 +25,7 @@ public class GameView extends JPanel
 	private JFrame frame;
 
 
-	public GameView(String difficulty) 
+	public GameView(String difficulty, HighScores highScores)
 	{
 		resolutionX = 800;
 		resolutionY = 780;
@@ -41,7 +41,7 @@ public class GameView extends JPanel
 		this.add(gamePanel.getGameArea());
 		
 
-		controller = new BlockController(gamePanel);
+		controller = new BlockController(gamePanel, highScores, difficulty);
 		
 		//New code(temp)
 		//Action listener for the restart button on the side panel
@@ -50,7 +50,7 @@ public class GameView extends JPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				frame.dispose();
-				GameView gameView = new GameView(difficulty);
+				GameView gameView = new GameView(difficulty, highScores);
 			}
 		};
 		

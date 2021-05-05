@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class HighScores
+public class HighScores implements Serializable
 {
 	private ArrayList<Integer> scores;
 

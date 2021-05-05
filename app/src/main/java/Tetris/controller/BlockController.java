@@ -19,10 +19,12 @@ public class BlockController implements KeyListener
 	protected TetrisFactory factory;
 	protected Timer timer;
 	protected ScoreController scoreController;
+	protected HighScores highScores;
+	protected String difficulty;
 	private boolean endGame;
 	private boolean continueMoving;
 
-	public BlockController(TetrisUserInterface ui)
+	public BlockController(TetrisUserInterface ui, HighScores highScores, String difficulty)
 	{
 		this.ui = ui;
 		this.factory = new TetrisFactory();
@@ -30,6 +32,10 @@ public class BlockController implements KeyListener
 		this.previousState = new TetrisArray();
 		this.endGame = false;
 		this.continueMoving = true;
+
+		this.highScores = highScores;
+		this.difficulty = difficulty;
+
 	}
 
 	/*
@@ -184,6 +190,16 @@ public class BlockController implements KeyListener
 	{
 		System.out.println("Timer Stoped");
 		timer.stop();
+
+		// Adding a highscore
+		System.out.println(this.scoreController.getScore());
+		highScores.addHighScore(this.scoreController.getScore());
+
+		//Saving highscores with HighScoresController
+		System.out.println("Trying to save this highscore throught HighScoreController");
+		HighScoreController highScoreController = new HighScoreController();
+		System.out.println(this.difficulty);
+		highScoreController.saveHighScores(this.difficulty, highScores);
 	}
 
 	public void resetTimer()

@@ -9,29 +9,32 @@ import java.io.ObjectOutputStream;
 
 public class HighScoresWindowAdapter extends WindowAdapter
 {
-	HighScores scores;
-	String fileName;
+	HighScores[] scores;
+	String[] fileNames;
 
-	public HighScoresWindowAdapter(HighScores scores, String fileName)
+	public HighScoresWindowAdapter(HighScores[] scores)
 	{
+		System.out.println("Window Adapter added");
 		this.scores = scores;
-		this.fileName = fileName;
+		this.fileNames = new String[]{"easy", "medium", "hard"};
 	}
 	
 	@Override
 	public void windowClosing(WindowEvent e)
 	{
-		try
-		{
-			FileOutputStream fileOutputStream = new FileOutputStream(this.fileName);
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-			objectOutputStream.writeObject(this.scores);
-			objectOutputStream.close();
-			fileOutputStream.close();
-		}
-		catch(IOException exception)
-		{
-			System.out.println(exception.getMessage());
+		for (int i = 0; i < this.fileNames.length; i++) {
+			System.out.println("Saving a highscores for " + this.fileNames[i]);
+			try {
+				FileOutputStream fileOutputStream = new FileOutputStream(this.fileNames[i]);
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				objectOutputStream.writeObject(this.scores[i]);
+				objectOutputStream.close();
+				fileOutputStream.close();
+				System.out.println("Highscores for " + this.fileNames[i] + " were saved");
+			} catch (IOException exception) {
+				System.out.println("Could not save highscores");
+				System.out.println(exception);
+			}
 		}
 	}
 }
