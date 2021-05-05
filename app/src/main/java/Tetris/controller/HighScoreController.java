@@ -43,11 +43,28 @@ public class HighScoreController
 	{
 		try
 		{
+			FileInputStream fileInputStream = new FileInputStream(difficulty);
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			HighScores loadedHighScores = (HighScores)objectInputStream.readObject();
+
+			for (int loadedScore : loadedHighScores.getHighScores())
+			{
+				scores.addHighScore(loadedScore);
+			}
+
 			FileOutputStream fileOutputStream = new FileOutputStream(difficulty);
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 			objectOutputStream.writeObject(scores);
+
+			objectInputStream.close();
+			fileInputStream.close();
 			objectOutputStream.close();
 			fileOutputStream.close();
+		}
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Error when trying to get previously saved highscores");
+			System.out.println(e.getMessage());
 		}
 		catch(IOException e)
 		{
